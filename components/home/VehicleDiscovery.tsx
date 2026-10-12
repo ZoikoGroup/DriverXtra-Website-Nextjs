@@ -140,12 +140,23 @@ export default function VehicleDiscovery() {
       id="vehicle-discovery"
       className="relative isolate w-full overflow-hidden bg-white px-5 text-[#101828] sm:px-8 lg:px-10"
     >
-      {/* Dark navy background */}
+      {/* Background image for the dark header area */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[430px] bg-[#07101F] sm:h-[440px] lg:h-[450px]"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[430px] overflow-hidden bg-[#07101F] sm:h-[440px] lg:h-[450px]"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_85%_15%,rgba(72,91,120,0.24),transparent_45%),linear-gradient(110deg,#07101F_0%,#07101F_58%,#111C2B_100%)]" />
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 ease-out hover:scale-[1.02]"
+          style={{
+            backgroundImage: "url('/images/home/bg1.png')",
+          }}
+        />
+
+        {/* Dark overlay for readable text and filter buttons */}
+        <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(7,16,31,0.88)_0%,rgba(7,16,31,0.80)_58%,rgba(17,28,43,0.88)_100%)]" />
+
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_85%_15%,rgba(72,91,120,0.24),transparent_45%)]" />
+
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#07101F]/20" />
       </div>
 
