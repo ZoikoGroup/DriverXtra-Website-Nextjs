@@ -73,11 +73,11 @@ export default function TrustSafety() {
           backgroundImage: `
             linear-gradient(
               180deg,
-              rgba(11,18,32,0.88) 0%,
-              rgba(11,18,32,0.94) 55%,
-              rgba(11,18,32,1) 100%
+              rgba(11,18,32,0.78) 0%,
+              rgba(11,18,32,0.88) 55%,
+              rgba(11,18,32,0.96) 100%
             ),
-            url("/images/home/trust-safety-bg.png")
+            url("/images/home/bg3.png")
           `,
         }}
       />
@@ -88,7 +88,7 @@ export default function TrustSafety() {
         className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_75%_20%,rgba(36,52,77,0.28),transparent_55%)]"
       />
 
-      {/* Same width as the other sections */}
+      {/* Main content */}
       <div className="mx-auto w-full max-w-[1280px] py-12 sm:py-16 lg:py-20">
         {/* Section heading */}
         <Reveal direction="up">
@@ -159,6 +159,7 @@ export default function TrustSafety() {
                 {/* Decorative indicator */}
                 <div className="mt-4 flex items-center gap-1.5 text-[11px] font-semibold text-[#FFB900]">
                   <span className="h-1 w-1 rounded-full bg-[#FFB900] transition-transform duration-300 group-hover/card:scale-150" />
+
                   <span className="opacity-0 transition-all duration-300 group-hover/card:translate-x-0.5 group-hover/card:opacity-100">
                     Built into the platform
                   </span>

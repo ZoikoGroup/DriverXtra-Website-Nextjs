@@ -7,7 +7,6 @@ import {
   CarFront,
   Building2,
   Info,
-  CheckCircle2,
   ArrowRight,
 } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
@@ -50,19 +49,16 @@ export default function SellVehicleValuation() {
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
   const [mileage, setMileage] = useState("");
-  const [message, setMessage] = useState("");
 
   function handleMethodChange(nextMethod: ValuationMethod) {
     setMethod(nextMethod);
     setIdentifier("");
     setMake("");
     setModel("");
-    setMessage("");
   }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setMessage("");
 
     const params = new URLSearchParams({
       method: method.toLowerCase().replace(/\s*&\s*/g, "-"),
@@ -85,13 +81,13 @@ export default function SellVehicleValuation() {
       id="sell-vehicle"
       className="w-full bg-white px-5 py-12 sm:px-8 sm:py-16 lg:px-10 lg:py-20"
     >
-      <div className="relative isolate mx-auto w-full max-w-[1280px] overflow-hidden rounded-[20px] bg-[#07101F] text-white shadow-[0_18px_50px_rgba(5,10,25,0.15)] transition-shadow duration-500 hover:shadow-[0_24px_65px_rgba(5,10,25,0.22)]">
+      <div className="group/valuation relative isolate mx-auto w-full max-w-[1280px] overflow-hidden rounded-[20px] bg-[#07101F] text-white shadow-[0_18px_50px_rgba(5,10,25,0.15)] transition-shadow duration-500 hover:shadow-[0_24px_65px_rgba(5,10,25,0.22)]">
         {/* Background image */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat transition-transform duration-1000 ease-out hover:scale-[1.02]"
+          className="pointer-events-none absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat transition-transform duration-1000 ease-out group-hover/valuation:scale-[1.02]"
           style={{
-            backgroundImage: "url('/images/home/sell-vehicle-bg.png')",
+            backgroundImage: "url('/images/home/bg2.png')",
           }}
         />
 
@@ -104,7 +100,7 @@ export default function SellVehicleValuation() {
         {/* Decorative circle */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -right-16 -top-24 -z-10 size-64 rounded-full border-[24px] border-[#FFBF00]/10 transition-transform duration-700 ease-out hover:rotate-12 sm:size-80"
+          className="pointer-events-none absolute -right-16 -top-24 -z-10 size-64 rounded-full border-[24px] border-[#FFBF00]/10 transition-transform duration-700 ease-out group-hover/valuation:rotate-12 sm:size-80"
         />
 
         <div className="grid grid-cols-1 items-center gap-8 p-5 sm:p-8 md:p-10 lg:grid-cols-[1.15fr_0.95fr] lg:gap-10 lg:p-10 xl:gap-12 xl:p-10">
@@ -112,7 +108,7 @@ export default function SellVehicleValuation() {
           <div className="min-w-0">
             <Reveal direction="up">
               <div className="flex items-center gap-2">
-                <span className="h-0.5 w-5 shrink-0 rounded-full bg-[#FFBF00] transition-all duration-300 group-hover:w-8" />
+                <span className="h-0.5 w-5 shrink-0 rounded-full bg-[#FFBF00] transition-all duration-300 group-hover/valuation:w-8" />
 
                 <p className="text-sm font-bold leading-5 text-[#FFBF00]">
                   Sell your vehicle
@@ -139,32 +135,34 @@ export default function SellVehicleValuation() {
 
             {/* Selling options */}
             <div className="mt-6 grid grid-cols-1 gap-x-5 gap-y-5 sm:grid-cols-2 sm:gap-y-4">
-              {sellingOptions.map(({ title, description, icon: Icon }, index) => (
-                <Reveal
-                  key={title}
-                  direction="up"
-                  delay={220 + index * 100}
-                >
-                  <div className="group flex h-full min-w-0 items-start gap-2.5 rounded-xl border border-transparent p-2 transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:bg-white/[0.06] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)]">
-                    <Icon
-                      size={18}
-                      strokeWidth={1.8}
-                      aria-hidden="true"
-                      className="mt-0.5 shrink-0 text-[#FFBF00] transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[-5deg]"
-                    />
+              {sellingOptions.map(
+                ({ title, description, icon: Icon }, index) => (
+                  <Reveal
+                    key={title}
+                    direction="up"
+                    delay={220 + index * 100}
+                  >
+                    <div className="group flex h-full min-w-0 items-start gap-2.5 rounded-xl border border-transparent p-2 transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:bg-white/[0.06] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)]">
+                      <Icon
+                        size={18}
+                        strokeWidth={1.8}
+                        aria-hidden="true"
+                        className="mt-0.5 shrink-0 text-[#FFBF00] transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[-5deg]"
+                      />
 
-                    <div className="min-w-0">
-                      <p className="text-sm font-bold leading-5 text-[#E7ECF4] transition-colors duration-300 group-hover:text-white">
-                        {title}
-                      </p>
+                      <div className="min-w-0">
+                        <p className="text-sm font-bold leading-5 text-[#E7ECF4] transition-colors duration-300 group-hover:text-white">
+                          {title}
+                        </p>
 
-                      <p className="mt-0.5 text-xs leading-5 text-[#C1C9D6] sm:text-sm">
-                        {description}
-                      </p>
+                        <p className="mt-0.5 text-xs leading-5 text-[#C1C9D6] sm:text-sm">
+                          {description}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </Reveal>
-              ))}
+                  </Reveal>
+                )
+              )}
             </div>
 
             {/* Disclaimer */}
@@ -268,7 +266,9 @@ export default function SellVehicleValuation() {
                       required
                       name="identifier"
                       value={identifier}
-                      onChange={(event) => setIdentifier(event.target.value)}
+                      onChange={(event) =>
+                        setIdentifier(event.target.value)
+                      }
                       placeholder={
                         method === "Registration"
                           ? "e.g. AB12 CDE"
@@ -317,25 +317,13 @@ export default function SellVehicleValuation() {
                   className="group/button flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[#FFBF00] px-5 py-2.5 text-sm font-bold text-[#07101F] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#FFD044] hover:shadow-[0_8px_24px_rgba(255,191,0,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFBF00] focus-visible:ring-offset-2 active:translate-y-0"
                 >
                   Get My Valuation
+
                   <ArrowRight
                     size={16}
                     aria-hidden="true"
                     className="transition-transform duration-300 group-hover/button:translate-x-1"
                   />
                 </button>
-
-                {message && (
-                  <p
-                    role="status"
-                    className="flex items-start gap-2 text-xs leading-5 text-[#66738C]"
-                  >
-                    <CheckCircle2
-                      size={16}
-                      className="mt-0.5 shrink-0 text-emerald-600"
-                    />
-                    {message}
-                  </p>
-                )}
               </form>
             </div>
           </Reveal>

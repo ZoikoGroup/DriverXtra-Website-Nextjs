@@ -30,7 +30,19 @@ const ctaButtons = [
 export default function FinalCTA() {
   return (
     <section className="group/cta relative w-full overflow-hidden bg-[#0B1220] px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-20">
-      {/* Subtle background glow */}
+      {/* Background image */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[url('/images/home/bg4.png')] bg-cover bg-center bg-no-repeat"
+      />
+
+      {/* Background overlay */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[#0B1220]/50 transition-colors duration-500 group-hover/cta:bg-[#0B1220]/40"
+      />
+
+      {/* Background glow */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -right-24 -top-24 size-80 rounded-full bg-[#FFB900]/[0.06] blur-3xl transition-all duration-700 group-hover/cta:bg-[#FFB900]/[0.10]"
@@ -41,7 +53,7 @@ export default function FinalCTA() {
         className="pointer-events-none absolute -bottom-32 -left-24 size-72 rounded-full bg-[#24344D]/30 blur-3xl"
       />
 
-      {/* Same width as the other sections */}
+      {/* Main content */}
       <div className="relative z-10 mx-auto flex w-full max-w-[1280px] flex-col items-center gap-4">
         {/* Heading */}
         <Reveal direction="up">
