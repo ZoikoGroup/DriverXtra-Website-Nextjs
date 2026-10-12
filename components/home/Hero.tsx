@@ -1,138 +1,347 @@
-import { BadgeCheck, Fuel, Gauge, MapPin, ShieldCheck, Star } from "lucide-react";
-import Reveal from "@/components/ui/Reveal";
-import HeroSearch from "./HeroSearch";
+"use client";
 
-const stats = [
-  { value: "2.4M+", label: "Vehicles listed" },
-  { value: "18K+", label: "Verified partners" },
-  { value: "40+", label: "Markets served" },
+import { useState } from "react";
+import {
+  CarFront,
+  Cog,
+  Wrench,
+  Search,
+  ChevronDown,
+  ShieldCheck,
+  FileText,
+  LockKeyhole,
+  Globe,
+} from "lucide-react";
+import Reveal from "@/components/ui/Reveal";
+
+const tabs = [
+  { label: "Vehicles", icon: CarFront },
+  { label: "Parts", icon: Cog },
+  { label: "Services", icon: Wrench },
+];
+
+const trustItems = [
+  {
+    title: "Verified Sellers",
+    description: "See how verification works",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Vehicle History Required",
+    description: "What history is required",
+    icon: FileText,
+  },
+  {
+    title: "Fitment-Verified Parts",
+    description: "How fitment confidence works",
+    icon: Cog,
+  },
+  {
+    title: "Secure Payments",
+    description: "Scope by market and product",
+    icon: LockKeyhole,
+  },
+  {
+    title: "Local Compliance",
+    description: "Rules for your region",
+    icon: Globe,
+  },
 ];
 
 export default function Hero() {
-  return (
-    <section className="relative overflow-hidden bg-navy text-white">
-      {/* Background decoration */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-brand/15 blur-3xl" />
-        <div className="absolute -right-20 bottom-0 h-[400px] w-[400px] rounded-full bg-blue-500/10 blur-3xl" />
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:56px_56px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
-      </div>
+  const [activeTab, setActiveTab] = useState("Vehicles");
 
-      <div className="relative mx-auto grid max-w-[1440px] items-center gap-14 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-[1.1fr_1fr] lg:px-10">
-        <div>
+  const options =
+    activeTab === "Vehicles"
+      ? ["New", "Used", "Certified"]
+      : activeTab === "Parts"
+        ? ["New", "Used", "Refurbished"]
+        : ["Maintenance", "Repair", "Inspection"];
+
+  return (
+    <section className="relative isolate overflow-hidden text-white">
+      {/* Background image only */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('/images/home/hero-bg.jpeg')",
+        }}
+      />
+
+      {/* Main hero content */}
+      <div className="relative mx-auto grid w-full max-w-[1440px] grid-cols-1 items-center gap-9 px-4 py-12 sm:px-6 sm:py-16 md:py-20 lg:min-h-[510px] lg:grid-cols-[1.1fr_1fr] lg:gap-14 lg:px-10 lg:py-16">
+        {/* Left: heading and buttons */}
+        <div className="min-w-0">
           <Reveal>
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-slate-200">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
-              </span>
-              One governed global automotive marketplace
-            </span>
+            <div className="mb-4 flex items-center gap-2">
+              <span className="h-0.5 w-5 shrink-0 rounded-full bg-[#FFBF00]" />
+              <p className="text-xs font-bold leading-5 text-[#FFBF00] sm:text-sm">
+                Vehicles, parts and services in one marketplace
+              </p>
+            </div>
           </Reveal>
 
           <Reveal delay={100}>
-            <h1 className="mt-6 text-4xl leading-[1.1] font-extrabold tracking-tight sm:text-5xl xl:text-6xl">
-              Buy, sell & power every{" "}
-              <span className="relative inline-block text-brand">
-                journey
-                <svg viewBox="0 0 200 12" className="absolute -bottom-2 left-0 w-full" aria-hidden="true">
-                  <path d="M2 9c50-6 146-8 196-2" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" />
-                </svg>
-              </span>{" "}
-              in one place.
+            <h1 className="max-w-[640px] text-[clamp(2.25rem,4.2vw,3.75rem)] font-extrabold leading-[1.12] tracking-[-0.035em]">
+              Buy, Sell, and Upgrade
+              <br className="hidden sm:block" /> Vehicles{" "}
+              <span className="text-[#FFBF00]">
+                with
+                <br className="hidden sm:block" /> Confidence
+              </span>
             </h1>
           </Reveal>
 
           <Reveal delay={200}>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
-              Vehicles, parts, finance, insurance and automotive services from verified sellers and regulated partners —
-              connected through DriverXtra.
+            <p className="mt-5 max-w-[560px] text-sm leading-6 text-[#C1C9D6] sm:text-base sm:leading-7">
+              The global automotive marketplace for vehicles,
+              fitment-verified parts, accessories and trusted services — with
+              transparent pricing, verified participants and secure
+              transactions.
             </p>
           </Reveal>
 
           <Reveal delay={300}>
-            <HeroSearch />
-          </Reveal>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href="#vehicle-search"
+                className="inline-flex min-h-11 items-center justify-center rounded-full bg-[#FFBF00] px-6 py-3 text-sm font-semibold text-[#07101F] transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-[#FFD044] hover:shadow-[0_8px_24px_rgba(255,191,0,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFBF00] focus-visible:ring-offset-2"
+              >
+                Find a Vehicle
+              </a>
 
-          <div className="mt-10 grid max-w-md grid-cols-3 gap-6">
-            {stats.map((s, i) => (
-              <Reveal key={s.label} delay={400 + i * 100}>
-                <p className="text-2xl font-bold text-white sm:text-3xl">{s.value}</p>
-                <p className="mt-1 text-xs text-slate-400 sm:text-sm">{s.label}</p>
-              </Reveal>
-            ))}
-          </div>
+              <a
+                href="/sell-vehicle"
+                className="inline-flex min-h-11 items-center justify-center rounded-full border border-white/35 px-6 py-3 text-sm font-semibold transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-[#FFBF00] hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFBF00]"
+              >
+                Sell Your Vehicle
+              </a>
+            </div>
+          </Reveal>
         </div>
 
-        {/* Visual: floating listing cards */}
-        <Reveal direction="left" delay={250} className="relative hidden lg:block">
-          <div className="relative mx-auto h-[460px] max-w-md">
-            <div className="absolute inset-x-6 top-0 animate-float rounded-3xl border border-white/10 bg-white p-5 text-ink shadow-2xl">
-              <div className="relative grid h-48 place-items-center overflow-hidden rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200">
-                <CarIllustration />
-                <span className="absolute top-3 left-3 inline-flex items-center gap-1 rounded-full bg-white px-2.5 py-1 text-[11px] font-semibold shadow">
-                  <BadgeCheck className="h-3.5 w-3.5 text-emerald-500" />
-                  Certified
-                </span>
-              </div>
-              <div className="mt-4 flex items-start justify-between">
-                <div>
-                  <p className="font-semibold">2024 Volt Crossover EX</p>
-                  <p className="mt-1 flex items-center gap-1 text-xs text-slate-500">
-                    <MapPin className="h-3.5 w-3.5" /> London, UK
-                  </p>
-                </div>
-                <p className="text-lg font-bold">£32,450</p>
-              </div>
-              <div className="mt-4 flex gap-4 border-t border-slate-100 pt-4 text-xs text-slate-600">
-                <span className="flex items-center gap-1.5">
-                  <Gauge className="h-4 w-4" /> 8,200 mi
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Fuel className="h-4 w-4" /> Electric
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Star className="h-4 w-4 fill-brand text-brand" /> 4.9
-                </span>
-              </div>
+        {/* Right: search panel */}
+        <Reveal
+          direction="left"
+          delay={200}
+          className="min-w-0 w-full"
+        >
+          <div
+            id="vehicle-search"
+            className="w-full min-w-0 rounded-2xl bg-white p-4 text-[#101828] shadow-[0_18px_50px_rgba(5,10,25,0.28)] transition-shadow duration-300 hover:shadow-[0_22px_55px_rgba(5,10,25,0.36)] sm:p-5"
+          >
+            <h2 className="mb-3 text-sm font-bold leading-5 text-[#52627F]">
+              Search DriverXtra
+            </h2>
+
+            {/* Category tabs */}
+            <div
+              role="tablist"
+              aria-label="Search category"
+              className="grid grid-cols-3 gap-1 rounded-xl border border-[#DFE5EE] bg-[#F4F6F9] p-1"
+            >
+              {tabs.map(({ label, icon: Icon }) => {
+                const active = activeTab === label;
+
+                return (
+                  <button
+                    key={label}
+                    type="button"
+                    role="tab"
+                    aria-selected={active}
+                    onClick={() => setActiveTab(label)}
+                    className={`flex min-h-10 min-w-0 items-center justify-center gap-1.5 rounded-lg px-1 text-xs font-semibold transition-all duration-200 ease-out sm:gap-2 sm:px-2 sm:text-sm ${
+                      active
+                        ? "bg-[#0B1220] text-white shadow-[0_2px_6px_rgba(11,18,32,0.25)]"
+                        : "text-[#66738C] hover:bg-white hover:text-[#101828]"
+                    }`}
+                  >
+                    <Icon
+                      size={14}
+                      strokeWidth={1.8}
+                      className={`shrink-0 transition-colors duration-200 ${
+                        active ? "text-[#FFBF00]" : ""
+                      }`}
+                    />
+                    {label}
+                  </button>
+                );
+              })}
             </div>
 
-            <div className="absolute bottom-6 -left-6 animate-float-slow rounded-2xl border border-white/10 bg-navy-700/90 p-4 shadow-2xl backdrop-blur [animation-delay:1s]">
-              <p className="text-xs text-slate-400">Pre-qualified finance</p>
-              <p className="mt-1 text-xl font-bold">
-                £389<span className="text-sm font-medium text-slate-400">/mo</span>
-              </p>
-              <div className="mt-2 h-1.5 w-40 overflow-hidden rounded-full bg-white/10">
-                <div className="h-full w-3/4 rounded-full bg-brand" />
-              </div>
-            </div>
+            {/* Search form */}
+            <form
+              className="mt-4 space-y-3.5"
+              onSubmit={(event) => {
+                event.preventDefault();
 
-            <div className="absolute -right-4 bottom-20 animate-float rounded-2xl bg-brand p-4 text-ink shadow-2xl [animation-delay:2s]">
-              <ShieldCheck className="h-6 w-6" />
-              <p className="mt-2 text-sm font-semibold">Seller verified</p>
-              <p className="text-xs">ID & compliance checked</p>
-            </div>
+                const formData = new FormData(event.currentTarget);
+                const params = new URLSearchParams();
+
+                formData.forEach((value, key) => {
+                  if (String(value).trim()) {
+                    params.set(key, String(value).trim());
+                  }
+                });
+
+                params.set("category", activeTab.toLowerCase());
+
+                window.location.href = `/search?${params.toString()}`;
+              }}
+            >
+              <div className="grid grid-cols-1 gap-x-3 gap-y-3 sm:grid-cols-2">
+                {/* Condition / service type */}
+                <label className="block min-w-0">
+                  <span className="mb-1 block text-[11px] font-semibold leading-5 text-[#344054] sm:text-xs">
+                    {activeTab === "Vehicles"
+                      ? "New / Used / Certified"
+                      : activeTab === "Parts"
+                        ? "Part Condition"
+                        : "Service Type"}
+                  </span>
+
+                  <div className="relative">
+                    <select
+                      name="condition"
+                      defaultValue=""
+                      className="h-11 w-full appearance-none rounded-xl border border-[#DFE5EE] bg-white py-2 pl-3 pr-9 text-xs text-[#344054] outline-none transition-colors duration-200 focus:border-[#FFBF00] focus:ring-2 focus:ring-[#FFBF00]/20 sm:text-sm"
+                    >
+                      <option value="">
+                        {activeTab === "Vehicles"
+                          ? "All vehicles"
+                          : activeTab === "Parts"
+                            ? "All conditions"
+                            : "All services"}
+                      </option>
+
+                      {options.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+
+                    <ChevronDown
+                      size={15}
+                      className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#66738C]"
+                    />
+                  </div>
+                </label>
+
+                {/* Location */}
+                <label className="block min-w-0">
+                  <span className="mb-1 block text-[11px] font-semibold leading-5 text-[#344054] sm:text-xs">
+                    Location / Postcode
+                  </span>
+
+                  <input
+                    name="location"
+                    type="text"
+                    placeholder="e.g. M1 1AE"
+                    className="h-11 w-full min-w-0 rounded-xl border border-[#DFE5EE] px-3 text-xs text-[#344054] outline-none transition-colors duration-200 placeholder:text-[#98A6BF] focus:border-[#FFBF00] focus:ring-2 focus:ring-[#FFBF00]/20 sm:text-sm"
+                  />
+                </label>
+
+                {/* Keyword */}
+                <label className="block min-w-0">
+                  <span className="mb-1 block text-[11px] font-semibold leading-5 text-[#344054] sm:text-xs">
+                    {activeTab === "Vehicles"
+                      ? "Make & Model"
+                      : activeTab === "Parts"
+                        ? "Part Name"
+                        : "Service Name"}
+                  </span>
+
+                  <input
+                    name="keyword"
+                    type="text"
+                    placeholder={
+                      activeTab === "Vehicles"
+                        ? "e.g. Toyota RAV4 or VW"
+                        : activeTab === "Parts"
+                          ? "e.g. Brake pads"
+                          : "e.g. Vehicle servicing"
+                    }
+                    className="h-11 w-full min-w-0 rounded-xl border border-[#DFE5EE] px-3 text-xs text-[#344054] outline-none transition-colors duration-200 placeholder:text-[#98A6BF] focus:border-[#FFBF00] focus:ring-2 focus:ring-[#FFBF00]/20 sm:text-sm"
+                  />
+                </label>
+
+                {/* Budget */}
+                <label className="block min-w-0">
+                  <span className="mb-1 block text-[11px] font-semibold leading-5 text-[#344054] sm:text-xs">
+                    Budget / Monthly
+                  </span>
+
+                  <div className="relative">
+                    <select
+                      name="budget"
+                      defaultValue=""
+                      className="h-11 w-full appearance-none rounded-xl border border-[#DFE5EE] bg-white py-2 pl-3 pr-9 text-xs text-[#344054] outline-none transition-colors duration-200 focus:border-[#FFBF00] focus:ring-2 focus:ring-[#FFBF00]/20 sm:text-sm"
+                    >
+                      <option value="">Any budget</option>
+                      <option value="under-5000">Under 5,000</option>
+                      <option value="5000-15000">5,000–15,000</option>
+                      <option value="15000-plus">15,000+</option>
+                    </select>
+
+                    <ChevronDown
+                      size={15}
+                      className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#66738C]"
+                    />
+                  </div>
+                </label>
+              </div>
+
+              {/* Search button */}
+              <button
+                type="submit"
+                className="flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[#FFBF00] px-5 py-2.5 text-sm font-semibold text-[#07101F] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#FFD044] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFBF00] focus-visible:ring-offset-2 active:translate-y-0"
+              >
+                <Search size={15} strokeWidth={2} />
+                Search {activeTab}
+              </button>
+            </form>
           </div>
         </Reveal>
       </div>
-    </section>
-  );
-}
 
-function CarIllustration() {
-  return (
-    <svg viewBox="0 0 320 140" className="w-4/5" aria-hidden="true">
-      <ellipse cx="160" cy="124" rx="130" ry="8" fill="#0f172a" opacity="0.12" />
-      <path
-        d="M30 96c0-14 8-22 22-25l38-8 34-26c8-6 18-9 28-9h56c12 0 22 5 30 13l26 24 32 6c12 2 20 12 20 24v10c0 5-4 9-9 9H39c-5 0-9-4-9-9V96z"
-        fill="#ffc20e"
-      />
-      <path d="M128 42c6-5 14-7 22-7h28v30h-74l24-23zM190 35h20c9 0 17 4 23 10l20 20h-63V35z" fill="#1e293b" opacity="0.85" />
-      <circle cx="90" cy="108" r="20" fill="#0f172a" />
-      <circle cx="90" cy="108" r="9" fill="#cbd5e1" />
-      <circle cx="240" cy="108" r="20" fill="#0f172a" />
-      <circle cx="240" cy="108" r="9" fill="#cbd5e1" />
-      <rect x="282" y="84" width="14" height="6" rx="3" fill="#fff" opacity="0.9" />
-    </svg>
+      {/* Trust strip */}
+      <div className="border-t border-white/10 bg-[#07101F]/90 backdrop-blur-[2px]">
+        <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-5 lg:px-10">
+          {trustItems.map(({ title, description, icon: Icon }) => (
+            <a
+              key={title}
+              href="#trust"
+              className="group flex min-w-0 items-center gap-3 border-b border-white/10 px-3 py-4 transition-colors duration-200 hover:bg-white/[0.04] sm:px-4 lg:border-b-0 lg:border-l lg:first:border-l-0"
+            >
+              <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-[#FFBF00] text-[#FFBF00] transition-all duration-300 group-hover:bg-[#FFBF00] group-hover:text-[#07101F] group-hover:shadow-[0_0_18px_rgba(255,191,0,0.18)]">
+                <Icon size={19} strokeWidth={1.7} />
+              </span>
+
+              <span className="min-w-0">
+                <span className="block text-sm font-bold leading-5 transition-colors duration-200 group-hover:text-[#FFBF00]">
+                  {title}
+                </span>
+                <span className="mt-0.5 block text-xs leading-5 text-[#AEB9CA]">
+                  {description}
+                </span>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Reduced-motion accessibility */}
+      <style jsx>{`
+        @media (prefers-reduced-motion: reduce) {
+          :global(*) {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+          }
+        }
+      `}</style>
+    </section>
   );
 }

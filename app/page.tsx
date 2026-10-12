@@ -1,23 +1,40 @@
 import Hero from "@/components/home/Hero";
-import Categories from "@/components/home/Categories";
-import Services from "@/components/home/Services";
-import HowItWorks from "@/components/home/HowItWorks";
-import WhyDriverXtra from "@/components/home/WhyDriverXtra";
-import ForBusiness from "@/components/home/ForBusiness";
-import FAQ from "@/components/home/FAQ";
-import CTA from "@/components/home/CTA";
+
+import Start from "@/components/home/Start";
+import VehicleDiscovery from "@/components/home/VehicleDiscovery";
+import BrowseVehicleTypes from "@/components/home/BrowseVehicleTypes";
+import ShopByBrand from "@/components/home/ShopByBrand";
+import SellVehicleValuation from "@/components/home/SellVehicleValuation";
+import PartsAccessories from "@/components/home/PartsAccessories";
+import FinanceInsurance from "@/components/home/FinanceInsurance";
+import ServicesMarketplace from "@/components/home/ServicesMarketplace";
+import TrustSafety from "@/components/home/TrustSafety";
+import BusinessSection from "@/components/home/BusinessSection";
+import RegionSection from "@/components/home/RegionSection";
+import InsightsSection from "@/components/home/InsightsSection";
+import AnswerCentre from "@/components/home/AnswerCentre";
+import FinalCTA from "@/components/home/FinalCTA";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <Categories />
-      <Services />
-      <HowItWorks />
-      <WhyDriverXtra />
-      <ForBusiness />
-      <FAQ />
-      <CTA />
+      <Start />
+      <VehicleDiscovery />
+      <BrowseVehicleTypes />
+      <ShopByBrand />
+      <SellVehicleValuation />
+      <PartsAccessories />
+      <FinanceInsurance />
+      <ServicesMarketplace />
+      <TrustSafety />
+      <BusinessSection />
+      <RegionSection />
+      <InsightsSection />
+      <AnswerCentre />
+      <FinalCTA />
+
+      
     </>
   );
 }
