@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-condensed: var(--font-barlow-condensed), "Arial Narrow", sans-serif;
+
+  --color-brand: #ffc20e;
+  --color-brand-dark: #e8ac00;
+  --color-brand-light: #fff4cc;
+
+  --color-ink: #0f172a;
+  --color-nav: #383939;
+  --color-navy: #0b1220;
+  --color-navy-800: #111a2e;
+  --color-navy-700: #1a2440;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 8s ease-in-out infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white font-sans text-ink antialiased;
+}
+
+/* ---------- Scroll reveal (used by components/ui/Reveal.tsx) ---------- */
+.reveal {
+  opacity: 0;
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal[data-reveal="up"] {
+  transform: translate3d(0, 48px, 0);
+}
+.reveal[data-reveal="down"] {
+  transform: translate3d(0, -32px, 0);
+}
+.reveal[data-reveal="left"] {
+  transform: translate3d(48px, 0, 0);
+}
+.reveal[data-reveal="right"] {
+  transform: translate3d(-48px, 0, 0);
+}
+.reveal[data-reveal="zoom"] {
+  transform: scale(0.92);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Mega menu open animation (components/layout/MegaMenu.tsx) ---------- */
+.mega-panel {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(14px) scale(0.98);
+  transform-origin: top center;
+  clip-path: inset(0 0 100% 0 round 0 0 16px 16px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    clip-path 0.25s ease,
+    visibility 0s linear 0.25s;
+}
+.mega-panel[data-open="true"] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+  clip-path: inset(0 0 0 0 round 0 0 16px 16px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    clip-path 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0s;
+}
+.mega-panel .mega-stagger {
+  opacity: 0;
+  transform: translate3d(0, 14px, 0);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+.mega-panel[data-open="true"] .mega-stagger {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0ms),
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0ms);
+}
+
+/* ---------- Button shine sweep on hover ---------- */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(115deg, transparent 30%, rgb(255 255 255 / 0.55) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+}
+.btn-shine:hover::after {
+  transform: translateX(120%);
+}
+
+/* ---------- Link underline that grows from the left ---------- */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition:
+    background-size 0.3s ease,
+    color 0.2s ease;
+}
+.link-underline:hover {
+  background-size: 100% 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .btn-shine::after {
+    display: none;
+  }
+  .mega-panel,
+  .mega-panel .mega-stagger {
+    transition: none !important;
+  }
+}
