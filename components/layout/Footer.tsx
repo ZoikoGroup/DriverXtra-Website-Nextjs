@@ -18,6 +18,12 @@ const offices = [
   },
 ];
 
+const pageLinks: Record<string, string> = {
+  "About DriverXtra": "/about-driverxtra",
+};
+
+const hrefFor = (label: string) => pageLinks[label] ?? "#";
+
 export default function Footer() {
   return (
     <footer className="bg-navy text-slate-300">
@@ -53,7 +59,7 @@ export default function Footer() {
                 {col.links.map((link) => (
                   <li key={link}>
                     <Link
-                      href="#"
+                      href={hrefFor(link)}
                       className="link-underline inline text-[13px] leading-snug text-slate-400 hover:text-white"
                     >
                       {link}
@@ -77,7 +83,7 @@ export default function Footer() {
               {["About DriverXtra", "Contact DriverXtra"].map((label) => (
                 <Link
                   key={label}
-                  href="#"
+                  href={hrefFor(label)}
                   className="relative pb-1 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:bg-brand after:transition-transform after:duration-300 hover:text-brand hover:after:scale-x-50"
                 >
                   {label}
