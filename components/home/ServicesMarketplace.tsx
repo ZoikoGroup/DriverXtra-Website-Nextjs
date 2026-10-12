@@ -169,7 +169,7 @@ export default function ServicesMarketplace() {
   return (
     <section
       id="services-marketplace"
-      className="w-full overflow-hidden bg-[#F4F7FB] px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-16"
+      className="w-full overflow-hidden bg-[#F4F7FB] px-5 py-10 sm:px-8 sm:py-14 lg:px-10 lg:py-16"
     >
       {/* Keep the same width as the other sections */}
       <div className="mx-auto w-full max-w-[1280px]">

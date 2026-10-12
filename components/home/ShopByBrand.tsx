@@ -58,9 +58,9 @@ export default function ShopByBrand() {
   return (
     <section
       id="shop-by-brand"
-      className="w-full overflow-hidden bg-[#F5F7FA]"
+      className="w-full overflow-hidden bg-[#F5F7FA] px-5 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-20"
     >
-      <div className="mx-auto w-full max-w-[1440px] px-4 py-14 sm:px-6 sm:py-16 lg:px-10 lg:py-20">
+      <div className="mx-auto w-full max-w-[1280px]">
         {/* Heading */}
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-[720px]">

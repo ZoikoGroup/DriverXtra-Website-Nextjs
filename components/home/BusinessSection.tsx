@@ -54,8 +54,8 @@ const businessTypes = [
 
 export default function BusinessSection() {
   return (
-    <section className="w-full overflow-hidden bg-white">
-      <div className="mx-auto w-full max-w-[1280px] px-5 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
+    <section className="w-full overflow-hidden bg-white px-5 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
+      <div className="mx-auto w-full max-w-[1280px]">
         {/* Section heading */}
         <Reveal direction="up">
           <div className="max-w-[720px]">

@@ -29,7 +29,7 @@ const ctaButtons = [
 
 export default function FinalCTA() {
   return (
-    <section className="group/cta relative w-full overflow-hidden bg-[#0B1220] px-5 py-16 sm:px-8 sm:py-20 lg:py-20">
+    <section className="group/cta relative w-full overflow-hidden bg-[#0B1220] px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-20">
       {/* Subtle background glow */}
       <div
         aria-hidden="true"
@@ -42,7 +42,7 @@ export default function FinalCTA() {
       />
 
       {/* Same width as the other sections */}
-      <div className="relative z-10 mx-auto flex w-full max-w-[1280px] flex-col items-center gap-4 px-0 sm:px-6">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1280px] flex-col items-center gap-4">
         {/* Heading */}
         <Reveal direction="up">
           <h2 className="text-center text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl sm:leading-[1.2] lg:text-5xl lg:leading-[60.48px]">

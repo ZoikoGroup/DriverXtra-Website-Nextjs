@@ -83,7 +83,7 @@ export default function SellVehicleValuation() {
   return (
     <section
       id="sell-vehicle"
-      className="w-full bg-white px-4 py-12 sm:px-6 sm:py-16 lg:px-10 lg:py-20"
+      className="w-full bg-white px-5 py-12 sm:px-8 sm:py-16 lg:px-10 lg:py-20"
     >
       <div className="relative isolate mx-auto w-full max-w-[1280px] overflow-hidden rounded-[20px] bg-[#07101F] text-white shadow-[0_18px_50px_rgba(5,10,25,0.15)] transition-shadow duration-500 hover:shadow-[0_24px_65px_rgba(5,10,25,0.22)]">
         {/* Background image */}
