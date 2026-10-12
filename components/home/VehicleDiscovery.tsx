@@ -138,7 +138,7 @@ export default function VehicleDiscovery() {
   return (
     <section
       id="vehicle-discovery"
-      className="relative isolate w-full overflow-hidden bg-white text-[#101828]"
+      className="relative isolate w-full overflow-hidden bg-white px-5 text-[#101828] sm:px-8 lg:px-10"
     >
       {/* Dark navy background */}
       <div
@@ -150,7 +150,7 @@ export default function VehicleDiscovery() {
       </div>
 
       {/* Main container: consistent 1280px width */}
-      <div className="mx-auto w-full max-w-[1280px] px-4 pb-12 pt-10 sm:px-6 sm:pt-12 lg:px-10 lg:pt-12">
+      <div className="mx-auto w-full max-w-[1280px] pb-12 pt-10 sm:pt-12 lg:pt-12">
         {/* Heading */}
         <Reveal direction="up">
           <div className="max-w-[520px]">

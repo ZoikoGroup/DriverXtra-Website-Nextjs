@@ -9,6 +9,25 @@ import { megaMenus, type MegaMenu as MegaMenuData } from "@/lib/megaMenu";
 const CLOSE_DELAY = 150;
 const VIEWPORT_GUTTER = 16;
 
+const MENU_BACKGROUNDS: Record<string, string> = {
+  "Buy Vehicles": "/images/menu/mega-menu.png",
+  "Sell Vehicles": "/images/menu/mega-menu.png",
+  "Parts & Accessories": "/images/menu/parts.png",
+  Finance: "/images/menu/finance.png",
+  Insurance: "/images/menu/insurance.png",
+  Services: "/images/menu/services.png",
+  "For Business": "/images/menu/business.png",
+  "Trust & Safety": "/images/menu/trust.png",
+  Insights: "/images/menu/insights.png",
+};
+
+const RIGHT_IMAGE_LAYOUTS = [
+  "Services",
+  "For Business",
+  "Trust & Safety",
+  "Insights",
+];
+
 export default function MegaMenu() {
   const [active, setActive] = useState<string | null>(null);
   const closeTimer = useRef<number | undefined>(undefined);
@@ -22,10 +41,9 @@ export default function MegaMenu() {
 
   const scheduleClose = () => {
     window.clearTimeout(closeTimer.current);
-    closeTimer.current = window.setTimeout(
-      () => setActive(null),
-      CLOSE_DELAY
-    );
+    closeTimer.current = window.setTimeout(() => {
+      setActive(null);
+    }, CLOSE_DELAY);
   };
 
   const close = () => {
@@ -34,8 +52,8 @@ export default function MegaMenu() {
   };
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") close();
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") close();
     };
 
     window.addEventListener("keydown", onKey);
@@ -46,7 +64,6 @@ export default function MegaMenu() {
     };
   }, []);
 
-  // Align the dropdown panel with the first and last navigation items.
   useEffect(() => {
     const nav = navRef.current;
     const list = listRef.current;
@@ -106,7 +123,9 @@ export default function MegaMenu() {
               <button
                 type="button"
                 aria-expanded={isOpen}
-                onClick={() => (isOpen ? close() : open(menu.label))}
+                onClick={() =>
+                  isOpen ? close() : open(menu.label)
+                }
                 className={`group relative flex h-12 items-center gap-1 px-2 font-condensed text-[16px] leading-none font-normal whitespace-nowrap transition-colors duration-300 xl:gap-1.5 xl:px-3 xl:text-[18px] 2xl:px-4 ${
                   isOpen
                     ? "text-white"
@@ -123,7 +142,6 @@ export default function MegaMenu() {
                   }`}
                 />
 
-                {/* Caret pointing into the open panel */}
                 <span
                   className={`absolute bottom-0 left-1/2 h-0 w-0 -translate-x-1/2 border-x-[7px] border-b-[7px] border-x-transparent border-b-white transition-all duration-300 ${
                     isOpen
@@ -163,6 +181,11 @@ function MegaPanel({
   isOpen,
   onNavigate,
 }: MegaPanelProps) {
+  const backgroundImage = MENU_BACKGROUNDS[menu.label];
+  const useRightImageLayout = RIGHT_IMAGE_LAYOUTS.includes(
+    menu.label
+  );
+
   return (
     <div
       data-open={isOpen}
@@ -233,18 +256,41 @@ function MegaPanel({
         menu={menu}
         isOpen={isOpen}
         onNavigate={onNavigate}
+        backgroundImage={backgroundImage}
+        useRightImageLayout={useRightImageLayout}
       />
     </div>
   );
 }
 
+type MegaBannerProps = MegaPanelProps & {
+  backgroundImage?: string;
+  useRightImageLayout: boolean;
+};
+
 function MegaBanner({
   menu,
   isOpen,
   onNavigate,
-}: MegaPanelProps) {
+  backgroundImage,
+  useRightImageLayout,
+}: MegaBannerProps) {
   const { banner } = menu;
   const tab = isOpen ? 0 : -1;
+
+  const bannerBackground: CSSProperties = backgroundImage
+    ? {
+        backgroundImage: `url("${backgroundImage}")`,
+        backgroundSize:
+          menu.label === "Insurance" ? "100% 100%" : "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundColor: "#0b1220",
+      }
+    : {
+        background:
+          "linear-gradient(120deg, #0b1220 0%, #1a2440 55%, #2b3550 100%)",
+      };
 
   const buttons = (
     <div className="flex flex-wrap items-center gap-3">
@@ -274,30 +320,51 @@ function MegaBanner({
     </div>
   );
 
-  // One common background image for every dropdown's bottom banner.
- const commonBackground: CSSProperties = {
-  backgroundImage:
-    "url('/images/menu/mega-menu-bg.jpeg'), linear-gradient(120deg, #0b1220 0%, #1a2440 55%, #2b3550 100%)",
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  backgroundRepeat: "no-repeat",
-};
+  // New separate image layout for only these four dropdowns.
+  if (useRightImageLayout) {
+    return (
+      <div
+        className="mega-stagger grid grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] items-stretch overflow-hidden bg-white"
+        style={delay(320)}
+      >
+        <div className="relative z-10 flex min-h-[150px] flex-col justify-center gap-3 bg-white px-5 py-5 xl:px-7">
+          {buttons}
 
+          {banner.note && (
+            <p className="max-w-sm text-[11px] leading-snug text-slate-600">
+              {banner.note}
+            </p>
+          )}
+        </div>
+
+        <div
+          className="relative min-h-[150px] overflow-hidden bg-white"
+          style={
+            backgroundImage
+              ? {
+                  backgroundImage: `url("${backgroundImage}")`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                }
+              : undefined
+          }
+        />
+      </div>
+    );
+  }
+
+  // Existing banner layout preserved for all other dropdowns.
   if (banner.layout === "full") {
     return (
       <div
         className="mega-stagger group/banner relative h-[130px] overflow-hidden"
         style={{
           ...delay(320),
-          ...commonBackground,
+          ...bannerBackground,
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent" />
-
-        {/* Existing yellow brand stripes */}
-        <span className="absolute -top-6 right-24 h-48 w-10 rotate-[35deg] bg-brand/90 transition-transform duration-700 group-hover/banner:translate-x-3" />
-
-        <span className="absolute -top-6 right-6 h-48 w-16 rotate-[35deg] bg-brand transition-transform duration-700 group-hover/banner:translate-x-3" />
 
         <div className="relative flex h-full items-center px-7">
           {buttons}
@@ -311,10 +378,9 @@ function MegaBanner({
       className="mega-stagger group/banner relative grid grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] items-stretch overflow-hidden"
       style={{
         ...delay(320),
-        ...commonBackground,
+        ...bannerBackground,
       }}
     >
-      {/* Subtle overlay keeps the button area readable */}
       <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/75 to-transparent" />
 
       <div className="relative z-10 flex flex-col justify-center gap-4 px-7 py-6">
@@ -327,7 +393,6 @@ function MegaBanner({
         )}
       </div>
 
-      {/* The shared background remains visible on the right */}
       <div className="relative min-h-[140px]" />
     </div>
   );

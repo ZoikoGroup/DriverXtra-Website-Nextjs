@@ -64,7 +64,7 @@ export default function TrustSafety() {
   );
 
   return (
-    <section className="group/section relative isolate w-full overflow-hidden bg-[#0B1220] text-white">
+    <section className="group/section relative isolate w-full overflow-hidden bg-[#0B1220] px-5 text-white sm:px-8 lg:px-10">
       {/* Background image and dark overlay */}
       <div
         aria-hidden="true"
@@ -89,7 +89,7 @@ export default function TrustSafety() {
       />
 
       {/* Same width as the other sections */}
-      <div className="mx-auto w-full max-w-[1280px] px-5 py-12 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
+      <div className="mx-auto w-full max-w-[1280px] py-12 sm:py-16 lg:py-20">
         {/* Section heading */}
         <Reveal direction="up">
           <header className="max-w-[720px]">

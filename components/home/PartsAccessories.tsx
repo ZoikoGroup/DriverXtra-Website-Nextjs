@@ -204,7 +204,7 @@ export default function PartsAccessories() {
   return (
     <section
       id="parts-accessories"
-      className="w-full overflow-hidden bg-[#F5F7FA] px-4 py-12 sm:px-6 sm:py-16 lg:px-10 lg:py-20"
+      className="w-full overflow-hidden bg-[#F5F7FA] px-5 py-12 sm:px-8 sm:py-16 lg:px-10 lg:py-20"
     >
       <div className="mx-auto w-full max-w-[1280px]">
         {/* Section heading */}
