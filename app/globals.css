@@ -141,6 +141,62 @@ body {
     transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0ms);
 }
 
+/* ---------- 404 page (app/not-found.tsx) ---------- */
+.nf-spin {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: nf-spin 0.9s linear infinite;
+}
+.nf-spin-slow {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: nf-spin 3s linear infinite;
+}
+.nf-road-line {
+  background-image: linear-gradient(90deg, #ffc20e 0 50%, transparent 50% 100%);
+  background-size: 90px 4px;
+  animation: nf-road 0.5s linear infinite;
+}
+.nf-scenery {
+  animation: nf-road-slow 6s linear infinite;
+}
+.nf-car {
+  animation: nf-bob 0.45s ease-in-out infinite alternate;
+}
+.nf-puff {
+  animation: nf-puff 1.2s ease-out infinite;
+}
+@keyframes nf-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes nf-road {
+  to {
+    background-position-x: -90px;
+  }
+}
+@keyframes nf-road-slow {
+  to {
+    background-position-x: -400px;
+  }
+}
+@keyframes nf-bob {
+  to {
+    transform: translateY(-3px);
+  }
+}
+@keyframes nf-puff {
+  0% {
+    opacity: 0.7;
+    transform: translate(0, 0) scale(0.4);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-46px, -14px) scale(1.6);
+  }
+}
+
 /* ---------- Skeleton loading placeholder ---------- */
 .skeleton {
   background: linear-gradient(90deg, #eef1f5 25%, #f8fafc 37%, #eef1f5 63%);
@@ -196,5 +252,13 @@ body {
   .mega-panel,
   .mega-panel .mega-stagger {
     transition: none !important;
+  }
+  .nf-spin,
+  .nf-spin-slow,
+  .nf-road-line,
+  .nf-scenery,
+  .nf-car,
+  .nf-puff {
+    animation: none;
   }
 }
