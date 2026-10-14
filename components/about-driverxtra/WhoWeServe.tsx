@@ -31,7 +31,7 @@ const audiences = [
     tab: "Dealers & retailers",
     icon: Store,
     title: "For dealers & retailers",
-    image: "/images/about/audience-dealers.jpg",
+    image: "/images/about/audience-dealers.webp",
     points: [
       "Branded storefront and inventory listings",
       "Inventory feeds and CRM / lead integrations",
@@ -47,7 +47,7 @@ const audiences = [
     tab: "Fleets",
     icon: Truck,
     title: "For fleets",
-    image: "/images/about/audience-fleets.jpg",
+    image: "/images/about/audience-fleets.webp",
     points: [
       "Bulk acquisition and disposition",
       "Maintenance and service networks",
@@ -63,7 +63,7 @@ const audiences = [
     tab: "Parts sellers & suppliers",
     icon: Crosshair,
     title: "For parts sellers & suppliers",
-    image: "/images/about/audience-parts-sellers.jpg",
+    image: "/images/about/ecosystem-parts.png",
     points: [
       "Fitment-matched listings by VIN, make, model, year and trim",
       "Seller verification and authenticity controls",
@@ -79,7 +79,7 @@ const audiences = [
     tab: "Service providers",
     icon: Wrench,
     title: "For service providers",
-    image: "/images/about/audience-service-providers.jpg",
+    image: "/images/about/audience-service-providers.webp",
     points: [
       "Reach verified vehicle owners",
       "Booking and scheduling tools",
@@ -95,7 +95,7 @@ const audiences = [
     tab: "Finance & insurance partners",
     icon: CreditCard,
     title: "For finance & insurance partners",
-    image: "/images/about/audience-finance-partners.jpg",
+    image: "/images/about/audience-finance-partners.webp",
     points: [
       "Reach in-market buyers at the point of decision",
       "Pre-qualification and comparison flows where permitted",
