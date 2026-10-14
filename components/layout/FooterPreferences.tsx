@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import { ChevronDown, Globe } from "lucide-react";
+import { regions, setRegion, useRegion, type RegionName } from "@/lib/region";
 
-const countries = ["United States", "United Kingdom", "Canada", "Germany", "France", "India", "Australia", "UAE"];
+const countries = regions.map((r) => r.name);
 const languages = ["English (UK)", "English (US)", "Deutsch", "Français", "Español", "हिन्दी"];
 const currencies = ["USD ($)", "GBP (£)", "EUR (€)", "CAD ($)", "INR (₹)", "AUD ($)", "AED (د.إ)"];
 
 export default function FooterPreferences() {
-  const [country, setCountry] = useState("United Kingdom");
+  const country = useRegion();
   const [language, setLanguage] = useState(languages[0]);
   const [currency, setCurrency] = useState(currencies[0]);
 
@@ -19,7 +20,7 @@ export default function FooterPreferences() {
         Viewing DriverXtra for <span className="font-semibold text-white">{country}</span>
       </p>
       <div className="mt-4 grid gap-3 sm:grid-cols-3">
-        <PreferenceSelect label="Country / Region" value={country} options={countries} onChange={setCountry} />
+        <PreferenceSelect label="Country / Region" value={country} options={countries} onChange={(v) => setRegion(v as RegionName)} />
         <PreferenceSelect label="Language" value={language} options={languages} onChange={setLanguage} />
         <PreferenceSelect label="Currency" value={currency} options={currencies} onChange={setCurrency} />
       </div>

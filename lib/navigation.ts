@@ -212,6 +212,13 @@ export const legalLinks = [
 /** Links that point to real pages; everything else is "#" until its page exists. */
 const pageLinks: Record<string, string> = {
   "About DriverXtra": "/about-driverxtra",
+  "Browse All Vehicles": "/buy-vehicles",
+  "Used Vehicles for Sale": "/buy-vehicles?type=used",
+  "New Vehicles": "/buy-vehicles?type=new",
+  "Certified Vehicles": "/buy-vehicles?type=certified",
+  "Electric & Hybrid Vehicles": "/buy-vehicles?type=electric",
+  "Commercial & Fleet Vehicles": "/buy-vehicles?type=commercial",
+  "Advanced Vehicle Search": "/buy-vehicles?type=advanced",
 };
 
 export const hrefFor = (label: string) => pageLinks[label] ?? "#";
