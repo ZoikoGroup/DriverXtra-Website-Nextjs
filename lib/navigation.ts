@@ -208,3 +208,10 @@ export const legalLinks = [
   "Compliance Disclosures",
   "Sitemap",
 ];
+
+/** Links that point to real pages; everything else is "#" until its page exists. */
+const pageLinks: Record<string, string> = {
+  "About DriverXtra": "/about-driverxtra",
+};
+
+export const hrefFor = (label: string) => pageLinks[label] ?? "#";
