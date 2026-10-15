@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Bookmark, BookmarkCheck, ChevronDown, Info, SearchX, SlidersHorizontal } from "lucide-react";
+import { Bookmark, BookmarkCheck, ChevronDown, Info, SearchX, SlidersHorizontal, X } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import { DEFAULT_REGION, setRegion, useRegion } from "@/lib/region";
 import BrowseHero from "./BrowseHero";
@@ -10,6 +10,7 @@ import VehicleCard, { VehicleCardSkeleton } from "./VehicleCard";
 import CompareBar, { MAX_COMPARE } from "./CompareBar";
 import CompareModal from "./CompareModal";
 import {
+  categoryPresets,
   countActiveFilters,
   emptyFilters,
   getResults,
@@ -36,12 +37,21 @@ function readStored(): { saved: string[]; compare: string[] } {
   }
 }
 
-export default function VehicleBrowser({ initialTab }: { initialTab: TabId }) {
+type VehicleBrowserProps = {
+  initialTab: TabId;
+  initialCategory?: string;
+  initialSort?: SortId;
+};
+
+const filtersFor = (category?: string): Filters => ({ ...emptyFilters, ...(category ? categoryPresets[category]?.filters : {}) });
+
+export default function VehicleBrowser({ initialTab, initialCategory, initialSort = "relevant" }: VehicleBrowserProps) {
   const region = useRegion();
   const [tab, setTab] = useState<TabId>(initialTab);
-  const [draft, setDraft] = useState<Filters>(emptyFilters);
-  const [applied, setApplied] = useState<Filters>(emptyFilters);
-  const [sort, setSort] = useState<SortId>("relevant");
+  const [category, setCategory] = useState(initialCategory);
+  const [draft, setDraft] = useState<Filters>(() => filtersFor(initialCategory));
+  const [applied, setApplied] = useState<Filters>(() => filtersFor(initialCategory));
+  const [sort, setSort] = useState<SortId>(initialSort);
   const [moreOpen, setMoreOpen] = useState(initialTab === "advanced");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -92,11 +102,21 @@ export default function VehicleBrowser({ initialTab }: { initialTab: TabId }) {
     if (compare.length === 0) setCompareOpen(false);
   }, [compare.length]);
 
-  // Footer / menu links to /buy-vehicles?type=… while already on this page.
+  // Footer / menu links to /buy-vehicles?… while already on this page.
+  const lastLink = useRef(JSON.stringify([initialTab, initialCategory, initialSort]));
   useEffect(() => {
+    const link = JSON.stringify([initialTab, initialCategory, initialSort]);
+    if (link === lastLink.current) return;
+    lastLink.current = link;
     setTab(initialTab);
     if (initialTab === "advanced") setMoreOpen(true);
-  }, [initialTab]);
+    setCategory(initialCategory);
+    setDraft(filtersFor(initialCategory));
+    setApplied(filtersFor(initialCategory));
+    setSort(initialSort);
+    flashLoading();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [initialTab, initialCategory, initialSort, flashLoading]);
 
   useEffect(() => {
     document.body.style.overflow = drawerOpen ? "hidden" : "";
@@ -123,6 +143,12 @@ export default function VehicleBrowser({ initialTab }: { initialTab: TabId }) {
   const clearFilters = () => {
     setDraft(emptyFilters);
     setApplied(emptyFilters);
+    setCategory(undefined);
+    flashLoading();
+  };
+
+  const clearCategory = () => {
+    setCategory(undefined);
     flashLoading();
   };
 
@@ -137,11 +163,12 @@ export default function VehicleBrowser({ initialTab }: { initialTab: TabId }) {
   const toggleCompare = (id: string) =>
     setCompare((c) => (c.includes(id) ? c.filter((x) => x !== id) : c.length < MAX_COMPARE ? [...c, id] : c));
 
-  const results = useMemo(() => getResults(region, tab, applied, sort), [region, tab, applied, sort]);
+  const results = useMemo(() => getResults(region, tab, applied, sort, category), [region, tab, applied, sort, category]);
   const activeCount = countActiveFilters(applied);
   const dirty = JSON.stringify(draft) !== JSON.stringify(applied);
   const compareItems = compare.map((id) => listings.find((l) => l.id === id)!).filter(Boolean);
-  const resultsKey = JSON.stringify([region, tab, applied, sort]);
+  const resultsKey = JSON.stringify([region, tab, applied, sort, category]);
+  const categoryChip = category && categoryPresets[category]?.match ? categoryPresets[category].label : null;
   const emptyRegion = !regionHasListings(region);
 
   const panelProps = {
@@ -170,7 +197,7 @@ export default function VehicleBrowser({ initialTab }: { initialTab: TabId }) {
           <div ref={resultsRef} className="min-w-0 scroll-mt-32">
             {/* Toolbar */}
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                 <button
                   type="button"
                   onClick={() => setDrawerOpen(true)}
@@ -190,6 +217,17 @@ export default function VehicleBrowser({ initialTab }: { initialTab: TabId }) {
                   </strong>{" "}
                   {results.length === 1 ? "vehicle" : "vehicles"} in {region}
                 </p>
+                {categoryChip && (
+                  <button
+                    type="button"
+                    onClick={clearCategory}
+                    aria-label={`Remove ${categoryChip} filter`}
+                    className="group inline-flex animate-fade-up items-center gap-1.5 rounded-full border border-brand bg-brand-light px-3 py-1 text-xs font-semibold text-ink transition-all hover:bg-brand"
+                  >
+                    {categoryChip}
+                    <X className="h-3.5 w-3.5 transition-transform duration-300 group-hover:rotate-90" />
+                  </button>
+                )}
               </div>
 
               <label className="relative flex items-center">

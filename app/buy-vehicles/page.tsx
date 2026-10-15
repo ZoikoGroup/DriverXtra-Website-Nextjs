@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import VehicleBrowser from "@/components/buy-vehicles/VehicleBrowser";
-import { isTabId } from "@/components/buy-vehicles/data";
+import { isCategoryId, isSortId, isTabId } from "@/components/buy-vehicles/data";
 
 export const metadata: Metadata = {
   title: "Buy Vehicles — DriverXtra",
@@ -9,10 +9,16 @@ export const metadata: Metadata = {
 };
 
 type PageProps = {
-  searchParams: Promise<{ type?: string }>;
+  searchParams: Promise<{ type?: string; category?: string; sort?: string }>;
 };
 
 export default async function BuyVehiclesPage({ searchParams }: PageProps) {
-  const { type } = await searchParams;
-  return <VehicleBrowser initialTab={isTabId(type) ? type : "all"} />;
+  const { type, category, sort } = await searchParams;
+  return (
+    <VehicleBrowser
+      initialTab={isTabId(type) ? type : "all"}
+      initialCategory={isCategoryId(category) ? category : undefined}
+      initialSort={isSortId(sort) ? sort : undefined}
+    />
+  );
 }

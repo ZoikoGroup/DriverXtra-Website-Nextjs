@@ -285,6 +285,30 @@ export type TabId = (typeof tabs)[number]["id"];
 
 export const isTabId = (value: string | undefined): value is TabId => tabs.some((t) => t.id === value);
 
+/* ---------- Category presets (footer / menu links: ?category=…) ---------- */
+
+const LUXURY_MAKES = ["BMW", "Mercedes-Benz", "Volvo"];
+
+type CategoryPreset = {
+  label: string;
+  /** Pre-ticks sidebar filters, so the visitor can see and change them. */
+  filters?: Partial<Filters>;
+  /** Extra rule that has no sidebar control — shown as a removable chip. */
+  match?: (l: Listing) => boolean;
+};
+
+export const categoryPresets: Record<string, CategoryPreset> = {
+  suv: { label: "SUVs & Crossovers", filters: { bodies: ["SUV / crossover"] } },
+  sedan: { label: "Sedans & Coupes", filters: { bodies: ["Sedan / coupe"] } },
+  "trucks-vans": { label: "Trucks & Vans", filters: { bodies: ["Van", "Pickup"] } },
+  verified: { label: "Verified Seller Inventory", filters: { verifiedOnly: true } },
+  luxury: { label: "Luxury & Performance", match: (l) => LUXURY_MAKES.includes(l.make) && !l.commercial },
+  classic: { label: "Classic & Collector", match: (l) => l.year <= 2000 },
+  motorcycles: { label: "Motorcycles & Powersports", match: () => false },
+};
+
+export const isCategoryId = (value: string | undefined): value is string => Boolean(value && value in categoryPresets);
+
 /* ---------- Filters ---------- */
 
 export type Filters = {
@@ -370,10 +394,13 @@ const sorters: Record<SortId, (a: Listing, b: Listing) => number> = {
   "mileage-asc": (a, b) => a.mileage - b.mileage,
 };
 
-export function getResults(region: RegionName, tab: TabId, filters: Filters, sort: SortId) {
+export const isSortId = (value: string | undefined): value is SortId => sortOptions.some((o) => o.id === value);
+
+export function getResults(region: RegionName, tab: TabId, filters: Filters, sort: SortId, category?: string) {
   const match = tabs.find((t) => t.id === tab)?.match ?? (() => true);
+  const categoryMatch = (category && categoryPresets[category]?.match) || (() => true);
   return listings
-    .filter((l) => l.country === region && match(l) && matchesFilters(l, filters))
+    .filter((l) => l.country === region && match(l) && categoryMatch(l) && matchesFilters(l, filters))
     .sort(sorters[sort]);
 }
 
