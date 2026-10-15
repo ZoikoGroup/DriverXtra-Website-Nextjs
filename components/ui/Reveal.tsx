@@ -2,6 +2,9 @@
 
 import { useEffect, useRef, useState, type ElementType, type ReactNode } from "react";
 
+/** Fired by the site intro loader when the page is revealed. */
+export const LOADER_DONE_EVENT = "dx:loader-done";
+
 type Direction = "up" | "down" | "left" | "right" | "zoom" | "fade";
 
 type RevealProps = {
@@ -47,8 +50,16 @@ export default function Reveal({
       { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
     );
 
-    observer.observe(el);
-    return () => observer.disconnect();
+    // While the intro loader covers the page, wait so animations aren't missed behind it.
+    const begin = () => observer.observe(el);
+    const waiting = !!document.documentElement.dataset.loading;
+    if (waiting) window.addEventListener(LOADER_DONE_EVENT, begin, { once: true });
+    else begin();
+
+    return () => {
+      window.removeEventListener(LOADER_DONE_EVENT, begin);
+      observer.disconnect();
+    };
   }, [once]);
 
   return (
