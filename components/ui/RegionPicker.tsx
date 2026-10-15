@@ -4,8 +4,16 @@ import { useEffect, useRef, useState } from "react";
 import { Check, Globe } from "lucide-react";
 import { regions, setRegion, useRegion } from "@/lib/region";
 
+type RegionPickerProps = {
+  label?: string;
+  buttonClassName?: string;
+};
+
 /** "Change region" link that opens an animated region list. */
-export default function RegionPicker() {
+export default function RegionPicker({
+  label = "Change region",
+  buttonClassName = "font-semibold text-brand underline underline-offset-2 transition-colors hover:text-white",
+}: RegionPickerProps) {
   const region = useRegion();
   const [open, setOpen] = useState(false);
   const wrapper = useRef<HTMLDivElement>(null);
@@ -31,9 +39,9 @@ export default function RegionPicker() {
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
         aria-haspopup="listbox"
-        className="font-semibold text-brand underline underline-offset-2 transition-colors hover:text-white"
+        className={buttonClassName}
       >
-        Change region
+        {label}
       </button>
 
       <div

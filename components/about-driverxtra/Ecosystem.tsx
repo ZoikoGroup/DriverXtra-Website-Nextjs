@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Car, CreditCard, Crosshair, Wrench } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import BgImage from "@/components/ui/BgImage";
-import SectionTitle, { container } from "./SectionTitle";
+import SectionTitle, { container } from "@/components/ui/SectionTitle";
 
 const categories = [
   {

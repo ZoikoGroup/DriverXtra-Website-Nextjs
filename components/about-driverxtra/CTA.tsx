@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Reveal from "@/components/ui/Reveal";
 import BgImage from "@/components/ui/BgImage";
-import { container } from "./SectionTitle";
+import { container } from "@/components/ui/SectionTitle";
 
 const secondary = ["Sell a Vehicle", "Find Parts", "For Business"];
 

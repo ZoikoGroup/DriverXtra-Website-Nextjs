@@ -1,6 +1,6 @@
 import { Code, Crosshair, Eye, FileText, Flag, Globe, Layers, Scale, ShieldCheck, User } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
-import SectionTitle, { container } from "./SectionTitle";
+import SectionTitle, { container } from "@/components/ui/SectionTitle";
 
 const capabilities = [
   { title: "Whole-ecosystem commerce", icon: Layers, text: "Vehicles, parts, services and partner products share one discovery and trust layer." },

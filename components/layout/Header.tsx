@@ -86,7 +86,7 @@ export default function Header() {
           </Link>
 
           <Link
-            href="#"
+            href="/sell-vehicles"
             className="btn-shine group hidden h-10 items-center gap-2 rounded-lg bg-brand px-4 text-sm font-semibold text-ink transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-dark hover:shadow-[0_8px_20px_-6px_rgba(232,172,0,0.7)] sm:inline-flex"
           >
             <CirclePlus className="h-4 w-4 fill-ink text-brand transition-transform duration-300 group-hover:rotate-90" />

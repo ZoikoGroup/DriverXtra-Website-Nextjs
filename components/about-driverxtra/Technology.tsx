@@ -21,7 +21,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
-import SectionTitle, { container } from "./SectionTitle";
+import SectionTitle, { container } from "@/components/ui/SectionTitle";
 
 type Module = { name: string; icon: LucideIcon; text: string };
 

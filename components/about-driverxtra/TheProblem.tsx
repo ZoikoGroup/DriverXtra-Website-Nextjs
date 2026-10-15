@@ -1,6 +1,6 @@
 import { Check, Clock, Code, Crosshair, FileText, Globe, Layers, ShieldCheck, Tag } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
-import SectionTitle, { container } from "./SectionTitle";
+import SectionTitle, { container } from "@/components/ui/SectionTitle";
 
 const problems = [
   {

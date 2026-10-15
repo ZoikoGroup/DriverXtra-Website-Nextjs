@@ -1,6 +1,6 @@
 import { Accessibility, Cpu, Eye, Globe, Plug, Scale, ShieldCheck } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
-import SectionTitle, { container } from "./SectionTitle";
+import SectionTitle, { container } from "@/components/ui/SectionTitle";
 
 const statements = [
   {

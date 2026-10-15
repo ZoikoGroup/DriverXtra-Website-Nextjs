@@ -2,7 +2,7 @@ import { Globe } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import BgImage from "@/components/ui/BgImage";
 import type { RegionName } from "@/lib/region";
-import RegionPicker from "./RegionPicker";
+import RegionPicker from "@/components/ui/RegionPicker";
 import { tabs, type TabId } from "./data";
 
 type BrowseHeroProps = {

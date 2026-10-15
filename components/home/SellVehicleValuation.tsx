@@ -9,6 +9,7 @@ import {
   Info,
   ArrowRight,
 } from "lucide-react";
+import Link from "next/link";
 import Reveal from "@/components/ui/Reveal";
 
 type ValuationMethod = "Registration" | "VIN" | "Make & model";
@@ -24,16 +25,19 @@ const sellingOptions = [
     title: "List for sale",
     description: "Reach verified buyers directly",
     icon: Tag,
+    href: "/sell-vehicles#create-listing",
   },
   {
     title: "Instant offer",
     description: "From named partners, with conditions",
     icon: Zap,
+    href: "/instant-offer",
   },
   {
     title: "Trade-in",
     description: "Put your value toward the next one",
     icon: CarFront,
+    href: "/trade-in",
   },
   {
     title: "Consignment",
@@ -136,12 +140,13 @@ export default function SellVehicleValuation() {
             {/* Selling options */}
             <div className="mt-6 grid grid-cols-1 gap-x-5 gap-y-5 sm:grid-cols-2 sm:gap-y-4">
               {sellingOptions.map(
-                ({ title, description, icon: Icon }, index) => (
+                ({ title, description, icon: Icon, href }: { title: string; description: string; icon: typeof Tag; href?: string }, index) => (
                   <Reveal
                     key={title}
                     direction="up"
                     delay={220 + index * 100}
                   >
+                    <OptionLink href={href}>
                     <div className="group flex h-full min-w-0 items-start gap-2.5 rounded-xl border border-transparent p-2 transition-all duration-300 hover:-translate-y-1 hover:border-white/10 hover:bg-white/[0.06] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)]">
                       <Icon
                         size={18}
@@ -160,6 +165,7 @@ export default function SellVehicleValuation() {
                         </p>
                       </div>
                     </div>
+                    </OptionLink>
                   </Reveal>
                 )
               )}
@@ -330,5 +336,16 @@ export default function SellVehicleValuation() {
         </div>
       </div>
     </section>
+  );
+}
+
+/** Wraps a selling option in a link when it has its own page. */
+function OptionLink({ href, children }: { href?: string; children: React.ReactNode }) {
+  return href ? (
+    <Link href={href} className="block h-full rounded-xl focus-visible:ring-2 focus-visible:ring-[#FFBF00] focus-visible:outline-none">
+      {children}
+    </Link>
+  ) : (
+    <>{children}</>
   );
 }

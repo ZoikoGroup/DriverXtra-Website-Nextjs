@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, CirclePlus, Search, Settings, X } from "lucide-react";
 import { megaMenus } from "@/lib/megaMenu";
+import { hrefFor } from "@/lib/navigation";
 import { quickActions } from "./quickActions";
 
 type MobileMenuProps = {
@@ -113,7 +114,7 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
                             {col.items.map(({ label, icon: Icon, note }) => (
                               <li key={label}>
                                 <Link
-                                  href="#"
+                                  href={hrefFor(label)}
                                   onClick={onClose}
                                   className="group flex items-center gap-3 rounded-lg py-2 pr-2 pl-1 text-sm text-slate-600 transition-all hover:bg-brand-light hover:pl-2 hover:text-ink"
                                 >
@@ -145,7 +146,7 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
             Find Parts
           </Link>
           <Link
-            href="#"
+            href="/sell-vehicles"
             className="btn-shine inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-brand text-sm font-semibold transition-colors hover:bg-brand-dark"
           >
             <CirclePlus className="h-4 w-4 fill-ink text-brand" />

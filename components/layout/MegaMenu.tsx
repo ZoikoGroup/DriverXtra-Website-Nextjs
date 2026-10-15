@@ -4,6 +4,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Link from "next/link";
 import { ChevronDown, ChevronRight } from "lucide-react";
+import { hrefFor } from "@/lib/navigation";
 import { megaMenus, type MegaMenu as MegaMenuData } from "@/lib/megaMenu";
 
 const CLOSE_DELAY = 150;
@@ -219,7 +220,7 @@ function MegaPanel({
                   style={delay(120 + c * 60 + i * 35)}
                 >
                   <Link
-                    href="#"
+                    href={hrefFor(label)}
                     onClick={onNavigate}
                     tabIndex={isOpen ? 0 : -1}
                     className="group/item -mx-2 flex items-center gap-3 rounded-lg px-2 py-2 transition-all duration-300 hover:bg-brand-light/70"
@@ -295,7 +296,7 @@ function MegaBanner({
   const buttons = (
     <div className="flex flex-wrap items-center gap-3">
       <Link
-        href="#"
+        href={hrefFor(banner.primary)}
         onClick={onNavigate}
         tabIndex={tab}
         className="btn-shine group/btn inline-flex h-11 items-center gap-2 rounded-md bg-brand px-5 text-[18px] font-bold text-ink shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-dark hover:shadow-lg"
@@ -307,7 +308,7 @@ function MegaBanner({
 
       {banner.secondary && (
         <Link
-          href="#"
+          href={hrefFor(banner.secondary.label)}
           onClick={onNavigate}
           tabIndex={tab}
           className="group/btn inline-flex h-11 items-center gap-2 rounded-md border border-ink bg-white px-4 text-[15px] font-semibold text-ink transition-all duration-300 hover:-translate-y-0.5 hover:bg-ink hover:text-white hover:shadow-lg"

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Check, CreditCard, Crosshair, Store, Truck, User, Wrench } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import BgImage from "@/components/ui/BgImage";
-import SectionTitle, { container } from "./SectionTitle";
+import SectionTitle, { container } from "@/components/ui/SectionTitle";
 
 // Shown for any tab whose own photo hasn't been added yet.
 const FALLBACK_IMAGE = "/images/about/audience-individuals.webp";

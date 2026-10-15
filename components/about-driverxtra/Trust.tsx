@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import BgImage from "@/components/ui/BgImage";
-import SectionTitle, { container } from "./SectionTitle";
+import SectionTitle, { container } from "@/components/ui/SectionTitle";
 
 const levels: { badge: string | LucideIcon; title: string; text: string }[] = [
   { badge: "L1", title: "Contact Verified", text: "Email and phone verification for limited account actions." },

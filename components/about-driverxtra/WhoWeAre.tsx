@@ -1,6 +1,6 @@
 import { Check, Scale, X } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
-import SectionTitle, { container } from "./SectionTitle";
+import SectionTitle, { container } from "@/components/ui/SectionTitle";
 
 const isList = [
   "A global automotive marketplace",

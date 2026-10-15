@@ -219,6 +219,23 @@ const pageLinks: Record<string, string> = {
   "Electric & Hybrid Vehicles": "/buy-vehicles?type=electric",
   "Commercial & Fleet Vehicles": "/buy-vehicles?type=commercial",
   "Advanced Vehicle Search": "/buy-vehicles?type=advanced",
+  "Instant Offer": "/instant-offer",
+  "Trade-In": "/trade-in",
+  "Sell My Vehicle": "/sell-vehicles",
+  "Value My Vehicle": "/sell-vehicles#value-my-vehicle",
+  "Create a Listing": "/sell-vehicles#create-listing",
+  // Header mega-menu labels
+  "Used Vehicles": "/buy-vehicles?type=used",
+  "Get an Instant Offer": "/instant-offer",
+  "Trade In": "/trade-in",
+  "List for Sale": "/sell-vehicles#create-listing",
+  "How Selling Works": "/sell-vehicles#how-selling-works",
+  "Seller Safety": "/sell-vehicles#seller-readiness",
+  // Header / mega-menu banner buttons
+  "Sell Vehicle": "/sell-vehicles",
+  "Get Your Value": "/sell-vehicles#value-my-vehicle",
+  "List a Vehicle": "/sell-vehicles#create-listing",
+  "Check Offer Availability": "/instant-offer",
 };
 
 export const hrefFor = (label: string) => pageLinks[label] ?? "#";

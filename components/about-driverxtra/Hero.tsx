@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Car, Check, ClipboardCheck, FileText, Lock, Settings, ShieldCheck } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import BgImage from "@/components/ui/BgImage";
-import { Eyebrow, container } from "./SectionTitle";
+import { Eyebrow, container } from "@/components/ui/SectionTitle";
 
 const timeline = [
   { title: "Offer accepted", note: "Recorded", done: true },

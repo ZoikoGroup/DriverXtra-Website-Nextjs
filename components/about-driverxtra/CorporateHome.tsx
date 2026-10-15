@@ -1,6 +1,6 @@
 import { MapPin } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
-import SectionTitle, { container } from "./SectionTitle";
+import SectionTitle, { container } from "@/components/ui/SectionTitle";
 
 const facts = [
   { label: "Trading name", value: "DriverXtra" },

@@ -1,6 +1,6 @@
 import Reveal from "@/components/ui/Reveal";
 import BgImage from "@/components/ui/BgImage";
-import { Eyebrow, container } from "./SectionTitle";
+import { Eyebrow, container } from "@/components/ui/SectionTitle";
 
 export default function LookingForward() {
   return (
