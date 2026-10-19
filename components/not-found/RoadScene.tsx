@@ -35,17 +35,20 @@ export default function RoadScene() {
         <span className="nf-puff absolute bottom-3 -left-1 h-4 w-4 rounded-full bg-white/20 [animation-delay:0.8s]" />
 
         <svg viewBox="0 0 260 96" className="nf-car relative w-full drop-shadow-[0_12px_18px_rgba(0,0,0,0.5)]">
-          {/* Body */}
-          <path
-            d="M18 62c0-9 6-15 15-17l34-7 30-22c7-5 15-7 24-7h48c11 0 20 4 27 11l22 21 25 5c9 2 15 9 15 18v8c0 4-3 7-7 7H25c-4 0-7-3-7-7v-10z"
-            fill="#ffc20e"
-          />
-          {/* Windows */}
-          <path d="M104 22c5-4 11-6 18-6h22v25H80l24-19z" fill="#0b1220" opacity="0.85" />
-          <path d="M153 16h18c8 0 15 3 20 8l17 17h-55V16z" fill="#0b1220" opacity="0.85" />
-          {/* Door line + handle */}
-          <path d="M149 41v32" stroke="#0b1220" strokeOpacity="0.25" strokeWidth="2" />
-          <rect x="160" y="48" width="12" height="3" rx="1.5" fill="#0b1220" opacity="0.4" />
+          {/* Body drawn facing left — mirrored so the car faces forward; lights and wheels stay put */}
+          <g transform="translate(260 0) scale(-1 1)">
+            {/* Body */}
+            <path
+              d="M18 62c0-9 6-15 15-17l34-7 30-22c7-5 15-7 24-7h48c11 0 20 4 27 11l22 21 25 5c9 2 15 9 15 18v8c0 4-3 7-7 7H25c-4 0-7-3-7-7v-10z"
+              fill="#ffc20e"
+            />
+            {/* Windows */}
+            <path d="M104 22c5-4 11-6 18-6h22v25H80l24-19z" fill="#0b1220" opacity="0.85" />
+            <path d="M153 16h18c8 0 15 3 20 8l17 17h-55V16z" fill="#0b1220" opacity="0.85" />
+            {/* Door line + handle */}
+            <path d="M149 41v32" stroke="#0b1220" strokeOpacity="0.25" strokeWidth="2" />
+            <rect x="160" y="48" width="12" height="3" rx="1.5" fill="#0b1220" opacity="0.4" />
+          </g>
           {/* Lights */}
           <rect x="240" y="56" width="12" height="6" rx="3" fill="#fff" />
           <rect x="18" y="58" width="8" height="6" rx="3" fill="#ef4444" />

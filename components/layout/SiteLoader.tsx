@@ -112,8 +112,11 @@ export default function SiteLoader() {
           </div>
           <div className="absolute -top-[26px] -translate-x-1/2" style={{ left: `${progress}%` }} aria-hidden="true">
             <svg viewBox="0 0 64 28" className="h-6 w-14 drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]">
-              <path d="M4 18c0-3 2-5 5-5.5l9-2 8-6c2-1.5 4-2 6.5-2h12c3 0 5.5 1 7.5 3l6 6 6 1.2c2.4.5 4 2.5 4 5V20c0 1-1 2-2 2H6c-1 0-2-1-2-2v-2z" fill="#ffc20e" />
-              <path d="M28 6.5c1.5-1 3-1.5 5-1.5h5v7H22l6-5.5zM41 5h4c2 0 4 1 5.5 2.4L55 12H41V5z" fill="#0b1220" opacity="0.85" />
+              {/* Body drawn facing left — mirrored so the car faces the direction it drives */}
+              <g transform="translate(64 0) scale(-1 1)">
+                <path d="M4 18c0-3 2-5 5-5.5l9-2 8-6c2-1.5 4-2 6.5-2h12c3 0 5.5 1 7.5 3l6 6 6 1.2c2.4.5 4 2.5 4 5V20c0 1-1 2-2 2H6c-1 0-2-1-2-2v-2z" fill="#ffc20e" />
+                <path d="M28 6.5c1.5-1 3-1.5 5-1.5h5v7H22l6-5.5zM41 5h4c2 0 4 1 5.5 2.4L55 12H41V5z" fill="#0b1220" opacity="0.85" />
+              </g>
               {[16, 50].map((cx) => (
                 <g key={cx}>
                   <circle cx={cx} cy="22" r="5" fill="#0b1220" />
