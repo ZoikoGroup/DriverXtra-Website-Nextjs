@@ -173,7 +173,7 @@ export default function CreateListing() {
               Review Seller Requirements
             </Link>
             <Link
-              href="#"
+              href="/manage-my-listings"
               className="rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-ink hover:shadow-md"
             >
               Manage My Listings

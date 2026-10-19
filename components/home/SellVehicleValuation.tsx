@@ -43,6 +43,7 @@ const sellingOptions = [
     title: "Consignment",
     description: "Business Verified dealers only",
     icon: Building2,
+    href: "/consignment",
   },
 ];
 
