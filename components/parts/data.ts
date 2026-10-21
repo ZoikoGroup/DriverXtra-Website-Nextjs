@@ -83,8 +83,14 @@ export type Part = {
   connectorCheck?: boolean;
   restricted?: boolean;
   keyNotice?: boolean;
+  /** Road-use or legality caution shown in an amber box. */
+  notice?: string;
   /** Vehicles this exact part has been checked against. */
   fits?: VehicleId[];
+  /** OEM listings: part-number revision, seller checks and supersession. */
+  revision?: string;
+  sellerCheck?: "authorized" | "L4" | "L3" | "L2";
+  newerRevision?: boolean;
 };
 
 export const PARTS_COUNTRY = "United Kingdom";
@@ -105,15 +111,15 @@ export const parts: Part[] = [
   { id: "tool-chest", name: "Rolling tool chest, 7 drawers", type: "tools", brand: "Example Workshop Co.", partNo: "EWS-RC7", spec: "Drawers: 7, ball-bearing runners", price: 249, seller: "Example Tool Depot", universal: true },
 
   // OEM-classified
-  { id: "vw-oil-filter", name: "Engine oil filter element", type: "oem", category: "Filters", brand: "Volkswagen", partNo: "VW-06L115562B", price: 18.6, seller: "Example VW Parts Centre", origin: "reviewed", fits: ["vw-golf"] },
-  { id: "vw-brake-pads", name: "Front brake pad set", type: "oem", category: "Brakes", brand: "Volkswagen", partNo: "VW-5Q0698151B", price: 86.4, seller: "Example Parts Exchange", origin: "unverified", fits: ["vw-golf"] },
-  { id: "ford-spark-plug", name: "Spark plug, 1.0 EcoBoost", type: "oem", category: "Ignition", brand: "Ford", partNo: "FD-1890342", price: 11.2, seller: "Example Motor Factors", origin: "reviewed", fits: ["ford-focus", "ford-fiesta"] },
-  { id: "toyota-cabin-filter", name: "Cabin air filter", type: "oem", category: "Filters", brand: "Toyota", partNo: "TY-87139-0R010", price: 24, seller: "Example Parts Exchange", origin: "lapsed", fits: ["toyota-corolla", "toyota-chr"] },
-  { id: "bmw-egr", name: "EGR valve (remanufactured)", type: "oem", category: "Exhaust", condition: "Remanufactured", brand: "BMW", partNo: "BM-11718591117", price: 214, seller: "Example Reman Ltd", origin: "unverified", fits: ["bmw-320d"] },
-  { id: "ford-headlamp", name: "Headlamp unit, left (used)", type: "oem", category: "Lighting", condition: "Used", brand: "Ford", partNo: "FD-2301457", price: 89, seller: "Example Breakers Yard", origin: "unverified", fits: ["ford-focus"] },
-  { id: "toyota-inverter-pump", name: "Inverter coolant pump", type: "oem", category: "Batteries & electrical", brand: "Toyota", partNo: "TY-G9020-47031", seller: "Example Parts Exchange", origin: "reviewed", fits: ["toyota-corolla", "toyota-chr"] },
-  { id: "vw-wiper-arm", name: "Rear wiper arm", type: "oem", category: "Exterior & roof", brand: "Volkswagen", partNo: "VW-5G6955707A", seller: "Example VW Parts Centre", origin: "reviewed", fits: ["vw-golf"] },
-  { id: "bmw-key-housing", name: "Remote key housing", type: "oem", category: "Interior", brand: "BMW", partNo: "BM-66129874230", price: 64, seller: "Example Parts Exchange", origin: "unverified", keyNotice: true, fits: ["bmw-320d", "bmw-x3"] },
+  { id: "vw-oil-filter", name: "Engine oil filter element", type: "oem", category: "Filters", brand: "Volkswagen", partNo: "VW-06L115562B", price: 18.6, seller: "Example VW Parts Centre", origin: "reviewed", fits: ["vw-golf"], revision: "B", sellerCheck: "authorized" },
+  { id: "vw-brake-pads", name: "Front brake pad set", type: "oem", category: "Brakes", brand: "Volkswagen", partNo: "VW-5Q0698151B", price: 86.4, seller: "Example Parts Exchange", origin: "unverified", fits: ["vw-golf"], revision: "B", sellerCheck: "L3", newerRevision: true },
+  { id: "ford-spark-plug", name: "Spark plug, 1.0 EcoBoost", type: "oem", category: "Ignition", brand: "Ford", partNo: "FD-1890342", price: 11.2, seller: "Example Motor Factors", origin: "reviewed", fits: ["ford-focus", "ford-fiesta"], revision: "A", sellerCheck: "L4" },
+  { id: "toyota-cabin-filter", name: "Cabin air filter", type: "oem", category: "Filters", brand: "Toyota", partNo: "TY-87139-0R010", price: 24, seller: "Example Parts Exchange", origin: "lapsed", fits: ["toyota-corolla", "toyota-chr"], revision: "A", sellerCheck: "L3" },
+  { id: "bmw-egr", name: "EGR valve (remanufactured)", type: "oem", category: "Exhaust", condition: "Remanufactured", brand: "BMW", partNo: "BM-11718591117", price: 214, seller: "Example Reman Ltd", origin: "unverified", fits: ["bmw-320d"], revision: "C", sellerCheck: "L4" },
+  { id: "ford-headlamp", name: "Headlamp unit, left (used)", type: "oem", category: "Lighting", condition: "Used", brand: "Ford", partNo: "FD-2301457", price: 89, seller: "Example Breakers Yard", origin: "unverified", fits: ["ford-focus"], revision: "A", sellerCheck: "L2" },
+  { id: "toyota-inverter-pump", name: "Inverter coolant pump", type: "oem", category: "Batteries & electrical", brand: "Toyota", partNo: "TY-G9020-47031", seller: "Example Parts Exchange", origin: "reviewed", fits: ["toyota-corolla", "toyota-chr"], revision: "A", sellerCheck: "authorized" },
+  { id: "vw-wiper-arm", name: "Rear wiper arm", type: "oem", category: "Exterior & roof", brand: "Volkswagen", partNo: "VW-5G6955707A", seller: "Example VW Parts Centre", origin: "reviewed", fits: ["vw-golf"], revision: "A", sellerCheck: "authorized" },
+  { id: "bmw-key-housing", name: "Remote key housing", type: "oem", category: "Batteries & electrical", brand: "BMW", partNo: "BM-66129874230", price: 64, seller: "Example Parts Exchange", origin: "unverified", keyNotice: true, fits: ["bmw-320d", "bmw-x3"], revision: "A", sellerCheck: "L3" },
 
   // Aftermarket
   { id: "ceramic-pads", name: "Ceramic front brake pads", type: "aftermarket", category: "Brakes", brand: "Example Brakeworks", partNo: "EB-CP2241", price: 24.99, seller: "Example Parts Direct", fits: ["vw-golf", "ford-focus"] },
@@ -121,20 +127,20 @@ export const parts: Part[] = [
   { id: "oil-filter", name: "Oil filter", type: "aftermarket", category: "Filters", brand: "Example Filtration", partNo: "EF-OF118", price: 8.49, seller: "Example Motor Factors", fits: ["ford-focus", "ford-fiesta", "toyota-corolla"] },
   { id: "panel-air-filter", name: "High-flow panel air filter", type: "aftermarket", category: "Air intake", sponsored: true, brand: "Example Airflow", partNo: "AF-HF2201", price: 54.99, seller: "Example Performance Store", fits: ["vw-golf", "bmw-320d"] },
   { id: "iridium-plugs", name: "Iridium spark plugs (set of 4)", type: "aftermarket", category: "Ignition", brand: "Example Ignition Co.", partNo: "EI-IR7744", price: 39.99, seller: "Example Motor Factors", fits: ["ford-focus", "ford-fiesta"] },
-  { id: "led-bulbs", name: "LED headlight bulbs, H7 (pair)", type: "aftermarket", category: "Lighting", brand: "Example Lighting", partNo: "EL-H7LED", price: 34.99, seller: "Example Parts Direct", fits: ["vw-golf", "vw-polo", "ford-focus"] },
-  { id: "cat-back", name: "Stainless cat-back exhaust", type: "aftermarket", category: "Exhaust", brand: "Example Exhaust Co.", partNo: "EX-CB220", price: 449, seller: "Example Performance Store", fits: ["vw-golf"] },
-  { id: "coilovers", name: "Adjustable coilover kit", type: "aftermarket", category: "Suspension", brand: "Example Suspension", partNo: "ES-CO330", price: 899, seller: "Example Performance Store", fits: ["vw-golf", "bmw-320d"] },
-  { id: "roof-bars", name: "Aluminium roof bars (pair)", type: "aftermarket", category: "Exterior & roof", brand: "Example Roof Systems", partNo: "ER-RB120", price: 119, seller: "Example Parts Direct", fits: ["vw-golf", "bmw-x3"] },
-  { id: "floor-mats", name: "All-weather floor mats (set)", type: "aftermarket", category: "Interior", brand: "Example Interiors", partNo: "EI-FM400", price: 44.99, seller: "Example Parts Direct", fits: ["toyota-corolla", "toyota-chr", "vw-golf"] },
-  { id: "battery-70ah", name: "12 V car battery, 70 Ah", type: "aftermarket", category: "Batteries & electrical", brand: "Example Power", partNo: "EP-B070", price: 109, seller: "Example Motor Factors", fits: ["ford-focus", "vw-golf", "vw-polo"] },
-  { id: "wiper-blades", name: "Flat wiper blades (pair)", type: "aftermarket", category: "Exterior & roof", brand: "Example Wipers", partNo: "EW-FB600", price: 19.99, seller: "Example Parts Direct", fits: ["vw-polo", "ford-fiesta", "toyota-corolla"] },
+  { id: "led-bulbs", name: "LED headlight bulbs H7 (pair)", type: "aftermarket", category: "Lighting", brand: "Example Lumen", partNo: "EL-H7LED", price: 44.99, seller: "Example Lighting Shop", fits: ["vw-golf", "vw-polo", "ford-focus"], notice: "LED replacements in halogen headlamp housings may not be permitted for road use in your selected market." },
+  { id: "cat-back", name: "Cat-back sport exhaust system", type: "aftermarket", category: "Exhaust", brand: "Example Exhaust Works", partNo: "EX-CB7G", price: 849, seller: "Example Performance Store", fits: ["vw-golf"], notice: "Exhaust modifications can affect road-use and noise rules. Check what applies to your vehicle and market before fitting." },
+  { id: "coilovers", name: "Adjustable coilover suspension kit", type: "aftermarket", category: "Suspension", brand: "Example Ride Dynamics", partNo: "RD-CO550", price: 1149, seller: "Example Performance Store", fits: ["vw-golf", "bmw-320d"] },
+  { id: "wiper-blades", name: "Universal flat wiper blade 24\"", type: "aftermarket", category: "Exterior & roof", brand: "Example Wipe Co.", partNo: "EW-U24", price: 12.99, seller: "Example Motor Factors", fits: ["vw-polo", "ford-fiesta", "toyota-corolla"] },
+  { id: "roof-bars", name: "Aluminium roof bars (pair)", type: "aftermarket", category: "Exterior & roof", brand: "Example Rack Systems", partNo: "RS-AB118", price: 189, seller: "Example Outdoor Gear Ltd", fits: ["vw-golf", "bmw-x3"] },
+  { id: "floor-mats", name: "Tailored rubber floor mats", type: "aftermarket", category: "Interior", brand: "Example Interior Co.", partNo: "IC-RM-G8", price: 49.99, seller: "Example Motor Factors", fits: ["toyota-corolla", "toyota-chr", "vw-golf"] },
+  { id: "battery-70ah", name: "AGM start-stop battery 70Ah", type: "aftermarket", category: "Batteries & electrical", condition: "Refurbished", brand: "Example Power", partNo: "EP-AGM70", seller: "Example Motor Factors", fits: ["ford-focus", "vw-golf", "vw-polo"] },
 
   // Tyres
+  { id: "eco-contact", name: "Example Grip Sport 5", type: "tyre", category: "Tyres", brand: "Example Tyre Co.", partNo: "ETC-GS5-2254517", spec: "225/45 R17 · 94 W (XL) · Summer", price: 112, perUnit: true, seller: "Example Tyre Warehouse", fits: ["vw-golf", "ford-focus"] },
+  { id: "all-season", name: "Example All-Season Plus", type: "tyre", category: "Tyres", brand: "Example Tyre Co.", partNo: "ETC-ASP-2055516", spec: "205/55 R16 · 91 V · All-season", price: 84, perUnit: true, seller: "Example Tyre Warehouse", fits: ["vw-polo", "ford-focus", "toyota-corolla"] },
   { id: "winter-edge", name: "Example Winter Edge", type: "tyre", category: "Tyres", brand: "Example Rubber Works", partNo: "ERW-WE-2254018", spec: "225/40 R18 · 92 V (XL) · Winter", price: 138, perUnit: true, seller: "Example Seasonal Tyres", fits: ["vw-golf"] },
   { id: "grip-sport", name: "Example Grip Sport 5 (rear)", type: "tyre", category: "Tyres", brand: "Example Tyre Co.", partNo: "ETC-GS5-2554018", spec: "255/40 R18 · 99 Y (XL) · Summer", price: 164, perUnit: true, seller: "Example Tyre Warehouse", fits: ["bmw-320d"] },
   { id: "part-worn", name: "Part-worn tyre", type: "tyre", category: "Tyres", condition: "Used", brand: "Example Tyre Co.", partNo: "ETC-GS5-2254517", spec: "225/45 R17 · 5 mm (seller-measured) · Summer", price: 38, perUnit: true, seller: "Example Breakers Yard", fits: ["vw-golf", "ford-focus"] },
-  { id: "eco-contact", name: "Example EcoTour 2", type: "tyre", category: "Tyres", brand: "Example Rubber Works", partNo: "ERW-ET2-2055516", spec: "205/55 R16 · 91 V · Summer", price: 92, perUnit: true, seller: "Example Tyre Warehouse", fits: ["vw-polo", "ford-focus", "toyota-corolla"] },
-  { id: "all-season", name: "Example AllWeather Pro", type: "tyre", category: "Tyres", brand: "Example Tyre Co.", partNo: "ETC-AWP-2254518", spec: "225/45 R18 · 95 V (XL) · All-season", price: 148, perUnit: true, seller: "Example Seasonal Tyres", fits: ["toyota-chr"] },
 
   // Wheels
   { id: "flow-alloy", name: "Example Flow 10-spoke alloy", type: "wheel", brand: "Example Wheel Co.", partNo: "EWC-F10-1875", spec: "18 × 7.5J · 5×112 · ET45", price: 189, perUnit: true, seller: "Example Wheel Studio", fits: ["vw-golf", "bmw-320d"] },
@@ -149,16 +155,19 @@ export const shopCards: {
   text: (count: (types: PartType[]) => number, region: string) => string;
   icon: LucideIcon;
   types?: PartType[];
+  id: string;
   /** Key in typePresets, for links to /parts?type=… */
   preset?: string;
-  vin?: boolean;
+  /** Cards with their own page, and the section that page scrolls to. */
+  page?: string;
+  anchor?: string;
 }[] = [
-  { title: "Find Parts by VIN", text: () => "Identify your vehicle first", icon: Car, vin: true },
-  { title: "OEM Parts", text: (n, r) => `OEM-classified parts and part numbers · ${n(["oem"])} in ${r}`, icon: ShieldCheck, types: ["oem"], preset: "oem" },
-  { title: "Aftermarket Parts", text: (n, r) => `Replacement and upgrade parts · ${n(["aftermarket"])} in ${r}`, icon: Wrench, types: ["aftermarket"], preset: "aftermarket" },
-  { title: "Tires & Wheels", text: (n, r) => `By vehicle or by size · ${n(["tyre", "wheel"])} in ${r}`, icon: CircleDot, types: ["tyre", "wheel"], preset: "tyres-wheels" },
-  { title: "EV Components & Chargers", text: (n, r) => `Proposed · chargers and cables · ${n(["ev"])} in ${r}`, icon: PlugZap, types: ["ev"], preset: "ev" },
-  { title: "Tools & Workshop Equipment", text: (n, r) => `Proposed · tools and equipment · ${n(["tools"])} in ${r}`, icon: ClipboardCheck, types: ["tools"], preset: "tools" },
+  { id: "vin", title: "Find Parts by VIN", text: () => "Identify your vehicle first", icon: Car, page: "/find-parts-by-vin", anchor: "find-by-vin" },
+  { id: "oem", page: "/oem-parts", anchor: "explore-oem", title: "OEM Parts", text: (n, r) => `OEM-classified parts and part numbers · ${n(["oem"])} in ${r}`, icon: ShieldCheck, types: ["oem"], preset: "oem" },
+  { id: "aftermarket", page: "/aftermarket-parts", anchor: "all-parts", title: "Aftermarket Parts", text: (n, r) => `Replacement and upgrade parts · ${n(["aftermarket"])} in ${r}`, icon: Wrench, types: ["aftermarket"], preset: "aftermarket" },
+  { id: "tyres-wheels", page: "/tires-and-wheels", anchor: "explore-tyres", title: "Tires & Wheels", text: (n, r) => `By vehicle or by size · ${n(["tyre", "wheel"])} in ${r}`, icon: CircleDot, types: ["tyre", "wheel"], preset: "tyres-wheels" },
+  { id: "ev", title: "EV Components & Chargers", text: (n, r) => `Proposed · chargers and cables · ${n(["ev"])} in ${r}`, icon: PlugZap, types: ["ev"], preset: "ev" },
+  { id: "tools", title: "Tools & Workshop Equipment", text: (n, r) => `Proposed · tools and equipment · ${n(["tools"])} in ${r}`, icon: ClipboardCheck, types: ["tools"], preset: "tools" },
 ];
 
 /* ---------- URL presets (footer / menu links) ---------- */
@@ -195,13 +204,13 @@ export const choosingTips: { title: string; text: string; icon: LucideIcon; link
     title: "OEM-classified",
     text: "Associated with the original equipment manufacturer. The label alone doesn't prove an item is genuine.",
     icon: ShieldCheck,
-    link: { label: "OEM Parts", href: "/parts?type=oem#all-parts" },
+    link: { label: "OEM Parts", href: "/oem-parts" },
   },
   {
     title: "Aftermarket",
     text: "From other supply channels. Not automatically compatible, better or worse.",
     icon: Wrench,
-    link: { label: "Aftermarket Parts", href: "/parts?type=aftermarket#all-parts" },
+    link: { label: "Aftermarket Parts", href: "/aftermarket-parts" },
   },
   {
     title: "Refurbished & used",

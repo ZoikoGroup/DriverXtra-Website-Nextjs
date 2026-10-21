@@ -37,13 +37,24 @@ const normalise = (s: string) =>
     .replace(/[\s-]+/g, "");
 
 type PartsBrowserProps = {
+  /** Shop card for the current page (e.g. "aftermarket"). */
+  activeCard?: string;
+  /** Use the short badge names ("Aftermarket", "Tyre"…) for the Product type filter. */
+  shortTypeLabels?: boolean;
   initialVehicle?: VehicleId;
   initialTypes?: PartType[];
   initialCategories?: Category[];
   initialQuery?: string;
 };
 
-export default function PartsBrowser({ initialVehicle, initialTypes = [], initialCategories = [], initialQuery = "" }: PartsBrowserProps) {
+export default function PartsBrowser({
+  activeCard,
+  shortTypeLabels = false,
+  initialVehicle,
+  initialTypes = [],
+  initialCategories = [],
+  initialQuery = "",
+}: PartsBrowserProps) {
   const region = useRegion();
 
   // Vehicle from "Check compatibility" or a /parts?vehicle=… link
@@ -139,7 +150,7 @@ export default function PartsBrowser({ initialVehicle, initialTypes = [], initia
         {partTypes.map((t) => (
           <CheckOption
             key={t.id}
-            label={t.label}
+            label={shortTypeLabels ? t.badge : t.label}
             checked={types.includes(t.id)}
             onChange={() => {
               setTypes((x) => toggle(x, t.id));
@@ -179,6 +190,7 @@ export default function PartsBrowser({ initialVehicle, initialTypes = [], initia
       />
 
       <ShopCards
+        active={activeCard}
         onSelectTypes={(ts) => {
           setTypes(ts);
           setCats([]);

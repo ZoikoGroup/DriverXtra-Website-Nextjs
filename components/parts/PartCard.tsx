@@ -11,6 +11,8 @@ type PartCardProps = {
   comparing: boolean;
   onToggleCompare: () => void;
   compareFull: boolean;
+  /** Fitment line when no vehicle is chosen. */
+  noVehicleText?: string;
 };
 
 const formatPrice = (n: number) => `£${n.toLocaleString("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
@@ -30,7 +32,14 @@ function StatusLine({ dot, tone, children }: { dot: string; tone: string; childr
   );
 }
 
-export default function PartCard({ part: p, vehicle, comparing, onToggleCompare, compareFull }: PartCardProps) {
+export default function PartCard({
+  part: p,
+  vehicle,
+  comparing,
+  onToggleCompare,
+  compareFull,
+  noVehicleText = "Fitment not verified for your vehicle",
+}: PartCardProps) {
   const type = partTypes.find((t) => t.id === p.type)!;
   const Icon = type.icon;
   const offered = p.price !== undefined;
@@ -77,7 +86,7 @@ export default function PartCard({ part: p, vehicle, comparing, onToggleCompare,
             </p>
           ) : (
             <StatusLine dot="border border-slate-400 bg-transparent" tone="text-slate-500">
-              {vehicle ? `Not listed for your ${vehicle.label.split(" · ")[0]}` : "Fitment not verified for your vehicle"}
+              {vehicle ? `Not listed for your ${vehicle.label.split(" · ")[0]}` : noVehicleText}
             </StatusLine>
           ))}
       </div>
@@ -92,6 +101,12 @@ export default function PartCard({ part: p, vehicle, comparing, onToggleCompare,
             Sale may be limited by market or buyer type — for example to trade or qualified buyers. Details are on the listing.
           </span>
         </span>
+      )}
+
+      {p.notice && (
+        <p className="mt-3 flex gap-2 rounded-lg bg-amber-50 px-3 py-2 text-xs leading-snug text-amber-800 ring-1 ring-amber-200">
+          <Info className="mt-px h-3.5 w-3.5 shrink-0" /> {p.notice}
+        </p>
       )}
 
       {p.keyNotice && (
