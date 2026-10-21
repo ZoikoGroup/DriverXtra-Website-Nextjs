@@ -1,23 +1,27 @@
 import type { Metadata } from "next";
 import FaqSection from "@/components/ui/FaqSection";
 import ExplainerCards from "@/components/ui/ExplainerCards";
-import VinHero from "@/components/parts/VinHero";
-import ShopCards from "@/components/parts/ShopCards";
-import VinLookup from "@/components/parts/VinLookup";
-import { labelQuestions, vinFaqs } from "@/components/parts/vin-data";
+import TyresBrowser from "@/components/tires-and-wheels/TyresBrowser";
+import { isVehicleId } from "@/components/parts/data";
+import { labelQuestions } from "@/components/parts/vin-data";
+import { faqs } from "@/components/tires-and-wheels/data";
 
 export const metadata: Metadata = {
-  title: "Find Parts by VIN — DriverXtra",
+  title: "Tires & Wheels — DriverXtra",
   description:
-    "Enter your vehicle identification number to identify your vehicle and narrow your parts search where VIN lookup is available.",
+    "Find tire and wheel options by vehicle details or product specifications — size, season, diameter and bolt pattern. Confirm fitment before ordering.",
 };
 
-export default function FindPartsByVinPage() {
+type PageProps = {
+  searchParams: Promise<{ vehicle?: string }>;
+};
+
+export default async function TiresAndWheelsPage({ searchParams }: PageProps) {
+  const { vehicle } = await searchParams;
+
   return (
     <>
-      <VinHero />
-      <ShopCards activeVin />
-      <VinLookup />
+      <TyresBrowser initialVehicle={isVehicleId(vehicle) ? vehicle : undefined} />
       <ExplainerCards
         eyebrow="Reading a part listing"
         title="Each label answers a different question"
@@ -29,9 +33,9 @@ export default function FindPartsByVinPage() {
       />
       <FaqSection
         eyebrow="Aftermarket parts questions"
-        title="Finding parts with a VIN"
+        title="Tyres & wheels questions"
         description="Fitment, claims, legality and returns — what's checked and what isn't."
-        faqs={vinFaqs}
+        faqs={faqs}
         className="bg-white"
       />
     </>
