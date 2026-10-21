@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, Info } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import RegionPicker from "@/components/ui/RegionPicker";
 import SectionTitle, { container } from "@/components/ui/SectionTitle";
@@ -12,7 +12,14 @@ import { listerRoles, listingSteps, listingVehicleTypes } from "./data";
 
 type Errors = { role?: string; vehicleType?: string };
 
-export default function CreateListing() {
+type CreateListingProps = {
+  /** Yellow "submitting isn't publishing" notice above the form. */
+  showNotice?: boolean;
+  /** Adds a "Back to Selling Options" button (used on the standalone listing page). */
+  showBackToOptions?: boolean;
+};
+
+export default function CreateListing({ showNotice = false, showBackToOptions = false }: CreateListingProps) {
   const region = useRegion();
   const [role, setRole] = useState("");
   const [vehicleType, setVehicleType] = useState("");
@@ -66,6 +73,16 @@ export default function CreateListing() {
             );
           })}
         </ol>
+
+        {showNotice && (
+          <Reveal delay={100}>
+            <p className="mt-5 flex items-start gap-2 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+              <Info className="mt-0.5 h-4 w-4 shrink-0" />
+              Submitting a listing does not mean it has been published. Verification and review requirements depend on the
+              seller, vehicle and market.
+            </p>
+          </Reveal>
+        )}
 
         <Reveal delay={150}>
           <div className="mt-5 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-7">
@@ -167,7 +184,7 @@ export default function CreateListing() {
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
             <Link
-              href="#seller-readiness"
+              href="/sell-vehicles#seller-readiness"
               className="rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-ink hover:shadow-md"
             >
               Review Seller Requirements
@@ -178,6 +195,14 @@ export default function CreateListing() {
             >
               Manage My Listings
             </Link>
+            {showBackToOptions && (
+              <Link
+                href="/sell-vehicles#selling-methods"
+                className="rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-ink hover:shadow-md"
+              >
+                Back to Selling Options
+              </Link>
+            )}
           </div>
         </Reveal>
       </div>

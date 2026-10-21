@@ -533,7 +533,7 @@ export default function OfferWizard() {
 
                   <div className="mt-6 flex flex-wrap gap-3">
                     <SecondaryButton onClick={restart}>Start a new request</SecondaryButton>
-                    <SecondaryButton href="/sell-vehicles#create-listing">Create a listing instead</SecondaryButton>
+                    <SecondaryButton href="/list-and-manage">Create a listing instead</SecondaryButton>
                   </div>
                 </>
               )}

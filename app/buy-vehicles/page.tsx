@@ -9,16 +9,17 @@ export const metadata: Metadata = {
 };
 
 type PageProps = {
-  searchParams: Promise<{ type?: string; category?: string; sort?: string }>;
+  searchParams: Promise<{ type?: string; category?: string; sort?: string; make?: string }>;
 };
 
 export default async function BuyVehiclesPage({ searchParams }: PageProps) {
-  const { type, category, sort } = await searchParams;
+  const { type, category, sort, make } = await searchParams;
   return (
     <VehicleBrowser
       initialTab={isTabId(type) ? type : "all"}
       initialCategory={isCategoryId(category) ? category : undefined}
       initialSort={isSortId(sort) ? sort : undefined}
+      initialMake={make?.trim().slice(0, 40) || undefined}
     />
   );
 }

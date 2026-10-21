@@ -41,16 +41,22 @@ type VehicleBrowserProps = {
   initialTab: TabId;
   initialCategory?: string;
   initialSort?: SortId;
+  /** From brand links, e.g. /buy-vehicles?make=BMW. */
+  initialMake?: string;
 };
 
-const filtersFor = (category?: string): Filters => ({ ...emptyFilters, ...(category ? categoryPresets[category]?.filters : {}) });
+const filtersFor = (category?: string, make?: string): Filters => ({
+  ...emptyFilters,
+  ...(category ? categoryPresets[category]?.filters : {}),
+  ...(make ? { make } : {}),
+});
 
-export default function VehicleBrowser({ initialTab, initialCategory, initialSort = "relevant" }: VehicleBrowserProps) {
+export default function VehicleBrowser({ initialTab, initialCategory, initialSort = "relevant", initialMake }: VehicleBrowserProps) {
   const region = useRegion();
   const [tab, setTab] = useState<TabId>(initialTab);
   const [category, setCategory] = useState(initialCategory);
-  const [draft, setDraft] = useState<Filters>(() => filtersFor(initialCategory));
-  const [applied, setApplied] = useState<Filters>(() => filtersFor(initialCategory));
+  const [draft, setDraft] = useState<Filters>(() => filtersFor(initialCategory, initialMake));
+  const [applied, setApplied] = useState<Filters>(() => filtersFor(initialCategory, initialMake));
   const [sort, setSort] = useState<SortId>(initialSort);
   const [moreOpen, setMoreOpen] = useState(initialTab === "advanced");
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -103,20 +109,20 @@ export default function VehicleBrowser({ initialTab, initialCategory, initialSor
   }, [compare.length]);
 
   // Footer / menu links to /buy-vehicles?… while already on this page.
-  const lastLink = useRef(JSON.stringify([initialTab, initialCategory, initialSort]));
+  const lastLink = useRef(JSON.stringify([initialTab, initialCategory, initialSort, initialMake]));
   useEffect(() => {
-    const link = JSON.stringify([initialTab, initialCategory, initialSort]);
+    const link = JSON.stringify([initialTab, initialCategory, initialSort, initialMake]);
     if (link === lastLink.current) return;
     lastLink.current = link;
     setTab(initialTab);
     if (initialTab === "advanced") setMoreOpen(true);
     setCategory(initialCategory);
-    setDraft(filtersFor(initialCategory));
-    setApplied(filtersFor(initialCategory));
+    setDraft(filtersFor(initialCategory, initialMake));
+    setApplied(filtersFor(initialCategory, initialMake));
     setSort(initialSort);
     flashLoading();
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [initialTab, initialCategory, initialSort, flashLoading]);
+  }, [initialTab, initialCategory, initialSort, initialMake, flashLoading]);
 
   useEffect(() => {
     document.body.style.overflow = drawerOpen ? "hidden" : "";

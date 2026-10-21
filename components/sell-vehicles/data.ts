@@ -47,7 +47,7 @@ export const sellingMethods: SellingMethod[] = [
     icon: Tag,
     note: "A valuation estimate is not a purchase offer.",
     cta: "Start Valuation",
-    href: "#value-my-vehicle",
+    href: "/value-my-vehicle",
     style: "primary",
     featured: true,
   },

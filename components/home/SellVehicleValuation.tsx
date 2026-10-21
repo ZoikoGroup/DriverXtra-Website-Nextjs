@@ -25,7 +25,7 @@ const sellingOptions = [
     title: "List for sale",
     description: "Reach verified buyers directly",
     icon: Tag,
-    href: "/sell-vehicles#create-listing",
+    href: "/list-and-manage",
   },
   {
     title: "Instant offer",
@@ -77,8 +77,8 @@ export default function SellVehicleValuation() {
       params.set("identifier", identifier.trim().toUpperCase());
     }
 
-    // Connect this route to your actual valuation API/page.
-    window.location.href = `/valuation?${params.toString()}`;
+    // The valuation page reads these params to pre-fill its form.
+    window.location.href = `/value-my-vehicle?${params.toString()}`;
   }
 
   return (

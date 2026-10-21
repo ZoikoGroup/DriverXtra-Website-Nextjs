@@ -139,7 +139,7 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
 
         <div className="grid grid-cols-2 gap-3 border-t border-slate-200 p-5">
           <Link
-            href="#"
+            href="/parts"
             className="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-slate-400 text-sm font-medium transition-colors hover:bg-ink hover:text-white"
           >
             <Settings className="h-4 w-4" />

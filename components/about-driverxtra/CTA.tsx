@@ -2,6 +2,7 @@ import Link from "next/link";
 import Reveal from "@/components/ui/Reveal";
 import BgImage from "@/components/ui/BgImage";
 import { container } from "@/components/ui/SectionTitle";
+import { hrefFor } from "@/lib/navigation";
 
 const secondary = ["Sell a Vehicle", "Find Parts", "For Business"];
 
@@ -34,7 +35,7 @@ export default function CTA() {
             {secondary.map((label) => (
               <Link
                 key={label}
-                href="#"
+                href={hrefFor(label)}
                 className="rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:border-white hover:bg-white hover:text-ink"
               >
                 {label}

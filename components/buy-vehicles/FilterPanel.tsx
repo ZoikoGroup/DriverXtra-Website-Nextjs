@@ -149,7 +149,7 @@ export default function FilterPanel({
         <Section title="Make">
           <Select label="Make" value={draft.make} onChange={(make) => onChange({ make })}>
             <option value="">Any make</option>
-            {makes.map((m) => (
+            {(draft.make && !makes.includes(draft.make) ? [...makes, draft.make].sort() : makes).map((m) => (
               <option key={m} value={m}>
                 {m}
               </option>
