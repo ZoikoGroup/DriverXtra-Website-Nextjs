@@ -289,6 +289,16 @@ body {
   }
 }
 
+/* Valuation range bar (components/value-my-vehicle) */
+@keyframes range-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
 /* ---------- Skeleton loading placeholder ---------- */
 .skeleton {
   background: linear-gradient(90deg, #eef1f5 25%, #f8fafc 37%, #eef1f5 63%);

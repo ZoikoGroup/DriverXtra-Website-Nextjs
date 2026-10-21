@@ -15,7 +15,7 @@ const routes = [
     description:
       "Browse verified inventory, compare vehicles and set price alerts.",
     link: "Browse Vehicles",
-    href: "/vehicles",
+    href: "/buy-vehicles",
     icon: CarFront,
   },
   {
@@ -23,7 +23,7 @@ const routes = [
     description:
       "Value, list, receive offers or explore trade-in options.",
     link: "Get Your Value",
-    href: "/sell-vehicle",
+    href: "/value-my-vehicle",
     icon: Tag,
   },
   {

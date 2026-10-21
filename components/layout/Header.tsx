@@ -78,7 +78,7 @@ export default function Header() {
           <span className="mx-2 hidden h-8 w-px bg-slate-300 lg:block" />
 
           <Link
-            href="#"
+            href="/parts"
             className="group hidden h-10 items-center gap-2 rounded-lg border border-slate-400 px-4 text-sm font-medium text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-ink hover:bg-ink hover:text-white hover:shadow-lg lg:inline-flex"
           >
             <Settings className="h-4 w-4 transition-transform duration-500 group-hover:rotate-180" />

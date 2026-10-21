@@ -30,7 +30,7 @@ export default function Hero() {
           <Reveal delay={300}>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                href="#value-my-vehicle"
+                href="/value-my-vehicle"
                 className="btn-shine rounded-full bg-brand px-6 py-3 text-sm font-semibold text-ink transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-dark hover:shadow-[0_10px_24px_-8px_rgba(255,194,14,0.7)]"
               >
                 Get My Valuation
