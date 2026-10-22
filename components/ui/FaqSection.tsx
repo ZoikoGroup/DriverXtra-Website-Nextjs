@@ -8,6 +8,7 @@ import SectionTitle, { container } from "./SectionTitle";
 export type Faq = { q: string; a: ReactNode };
 
 type FaqSectionProps = {
+  id?: string;
   eyebrow: string;
   title: string;
   description?: ReactNode;
@@ -16,11 +17,11 @@ type FaqSectionProps = {
 };
 
 /** Sticky heading on the left, one-at-a-time accordion on the right. */
-export default function FaqSection({ eyebrow, title, description, faqs, className = "bg-slate-50" }: FaqSectionProps) {
+export default function FaqSection({ id, eyebrow, title, description, faqs, className = "bg-slate-50" }: FaqSectionProps) {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section className={`py-20 md:py-24 ${className}`}>
+    <section id={id} className={`scroll-mt-28 py-20 md:py-24 ${className}`}>
       <div className={`${container} grid gap-10 lg:grid-cols-[1fr_2fr]`}>
         <div className="lg:sticky lg:top-40 lg:self-start">
           <SectionTitle eyebrow={eyebrow} title={title} description={description} />
