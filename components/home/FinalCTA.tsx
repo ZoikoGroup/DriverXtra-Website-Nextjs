@@ -22,7 +22,7 @@ const ctaButtons = [
   },
   {
     label: "Get Pre-Qualified",
-    href: "/finance",
+    href: "/compare-vehicle-finance",
     primary: false,
   },
 ];

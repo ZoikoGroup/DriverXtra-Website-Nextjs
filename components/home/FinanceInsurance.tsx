@@ -414,7 +414,7 @@ export default function FinanceInsurance() {
             </p>
 
             <a
-              href="/finance/fleet"
+              href="/compare-vehicle-finance?mode=leases"
               className="group/link inline-flex w-fit shrink-0 items-center gap-1 border-b-2 border-[#FFB900] pb-1 text-sm font-semibold text-[#171F32] transition-colors duration-300 hover:text-[#B98200]"
             >
               Fleet finance options

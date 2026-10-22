@@ -166,8 +166,8 @@ export const shopCards: {
   { id: "oem", page: "/oem-parts", anchor: "explore-oem", title: "OEM Parts", text: (n, r) => `OEM-classified parts and part numbers · ${n(["oem"])} in ${r}`, icon: ShieldCheck, types: ["oem"], preset: "oem" },
   { id: "aftermarket", page: "/aftermarket-parts", anchor: "all-parts", title: "Aftermarket Parts", text: (n, r) => `Replacement and upgrade parts · ${n(["aftermarket"])} in ${r}`, icon: Wrench, types: ["aftermarket"], preset: "aftermarket" },
   { id: "tyres-wheels", page: "/tires-and-wheels", anchor: "explore-tyres", title: "Tires & Wheels", text: (n, r) => `By vehicle or by size · ${n(["tyre", "wheel"])} in ${r}`, icon: CircleDot, types: ["tyre", "wheel"], preset: "tyres-wheels" },
-  { id: "ev", title: "EV Components & Chargers", text: (n, r) => `Proposed · chargers and cables · ${n(["ev"])} in ${r}`, icon: PlugZap, types: ["ev"], preset: "ev" },
-  { id: "tools", title: "Tools & Workshop Equipment", text: (n, r) => `Proposed · tools and equipment · ${n(["tools"])} in ${r}`, icon: ClipboardCheck, types: ["tools"], preset: "tools" },
+  { id: "ev", page: "/ev-components-and-chargers", anchor: "explore-ev", title: "EV Components & Chargers", text: (n, r) => `Proposed · chargers and cables · ${n(["ev"])} in ${r}`, icon: PlugZap, types: ["ev"], preset: "ev" },
+  { id: "tools", page: "/tools-and-workshop-equipment", anchor: "explore-tools", title: "Tools & Workshop Equipment", text: (n, r) => `Proposed · tools and equipment · ${n(["tools"])} in ${r}`, icon: ClipboardCheck, types: ["tools"], preset: "tools" },
 ];
 
 /* ---------- URL presets (footer / menu links) ---------- */
