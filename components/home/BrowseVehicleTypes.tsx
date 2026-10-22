@@ -19,56 +19,56 @@ const vehicleTypes = [
     title: "Sedans & Coupes",
     image: "/images/home/image5.png",
     icon: CarFront,
-    href: "/vehicles?type=sedans-coupes",
+    href: "/buy-vehicles?category=sedan",
   },
   {
     title: "SUVs & Crossovers",
     image: "/images/home/image6.png",
     icon: CarFront,
-    href: "/vehicles?type=suvs-crossovers",
+    href: "/buy-vehicles?category=suv",
   },
   {
     title: "Trucks & Vans",
     image: "/images/home/image7.png",
     icon: Truck,
-    href: "/vehicles?type=trucks-vans",
+    href: "/buy-vehicles?category=trucks-vans",
   },
   {
     title: "Electric & Hybrid",
     image: "/images/home/image8.png",
     icon: Zap,
-    href: "/vehicles?type=electric-hybrid",
+    href: "/buy-vehicles?type=electric",
     tall: true,
   },
   {
     title: "Luxury & Performance",
     image: "/images/home/image9.png",
     icon: Crown,
-    href: "/vehicles?type=luxury-performance",
+    href: "/buy-vehicles?category=luxury",
   },
   {
     title: "Commercial & Fleet",
     image: "/images/home/image10.png",
     icon: Building2,
-    href: "/vehicles?type=commercial-fleet",
+    href: "/buy-vehicles?type=commercial",
   },
   {
     title: "Motorcycles & Powersports",
     image: "/images/home/image11.png",
     icon: Bike,
-    href: "/vehicles?type=motorcycles-powersports",
+    href: "/buy-vehicles?category=motorcycles",
   },
   {
     title: "Classic & Collector",
     image: "/images/home/image12.png",
     icon: Star,
-    href: "/vehicles?type=classic-collector",
+    href: "/buy-vehicles?category=classic",
   },
   {
     title: "Project Vehicles",
     image: "/images/home/image13.png",
     icon: Wrench,
-    href: "/vehicles?type=project-vehicles",
+    href: "/buy-vehicles",
     restricted: true,
   },
 ];
@@ -185,7 +185,7 @@ export default function BrowseVehicleTypes() {
           </div>
 
           <a
-            href="/vehicles"
+            href="/buy-vehicles"
             className={`group/link inline-flex w-fit shrink-0 items-center gap-1.5 border-b-2 border-[#FFBF00] pb-1 text-sm font-semibold text-[#172033] transition-all duration-700 hover:text-[#B98200] sm:text-base ${
               isVisible
                 ? "translate-y-0 opacity-100"

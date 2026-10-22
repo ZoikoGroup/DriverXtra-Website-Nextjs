@@ -409,7 +409,7 @@ export default function VehicleDiscovery() {
             </p>
 
             <a
-              href="/vehicles"
+              href="/buy-vehicles"
               className="group/link inline-flex w-fit shrink-0 items-center gap-1.5 border-b-2 border-[#FFBF00] pb-0.5 text-sm font-semibold text-[#172033] transition-colors duration-300 hover:text-[#B98200]"
             >
               View all vehicles
