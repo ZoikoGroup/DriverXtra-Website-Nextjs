@@ -16,6 +16,8 @@ export default async function BuyVehiclesPage({ searchParams }: PageProps) {
   const { type, category, sort, make } = await searchParams;
   return (
     <VehicleBrowser
+      // Remount when the query changes so footer/menu links re-apply the category filter.
+      key={[type, category, sort, make].join("|")}
       initialTab={isTabId(type) ? type : "all"}
       initialCategory={isCategoryId(category) ? category : undefined}
       initialSort={isSortId(sort) ? sort : undefined}
