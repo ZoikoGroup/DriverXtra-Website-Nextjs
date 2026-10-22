@@ -291,11 +291,9 @@ export default function FinanceInsurance() {
 
               <button
                 type="button"
-                onClick={() =>
-                  window.alert(
-                    "Pre-qualification requires integration with a regulated finance partner."
-                  )
-                }
+                onClick={() => {
+                  window.location.href = "/get-pre-qualified";
+                }}
                 className="group/finance mt-4 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[#FFB900] px-5 py-3 text-sm font-bold text-[#0B1220] transition-all duration-300 hover:-translate-y-1 hover:bg-[#FFD04D] hover:shadow-[0_8px_24px_rgba(255,185,0,0.25)] active:translate-y-0"
               >
                 Get Pre-Qualified
