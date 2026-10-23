@@ -111,10 +111,10 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
                             {col.title}
                           </p>
                           <ul>
-                            {col.items.map(({ label, icon: Icon, note }) => (
+                            {col.items.map(({ label, icon: Icon, note, href }) => (
                               <li key={label}>
                                 <Link
-                                  href={hrefFor(label)}
+                                  href={href ?? hrefFor(label)}
                                   onClick={onClose}
                                   className="group flex items-center gap-3 rounded-lg py-2 pr-2 pl-1 text-sm text-slate-600 transition-all hover:bg-brand-light hover:pl-2 hover:text-ink"
                                 >

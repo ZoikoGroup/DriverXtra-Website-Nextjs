@@ -1,26 +1,16 @@
 import {
-  BadgePercent,
-  Ban,
   Bookmark,
-  Briefcase,
   Building2,
   Car,
-  CarFront,
   ClipboardList,
-  Coins,
   FileText,
-  Flame,
   Handshake,
   Info,
   Lock,
   MessageCircle,
   Scale,
-  ShieldCheck,
-  ShieldPlus,
   Tag,
   TriangleAlert,
-  Truck,
-  Umbrella,
   type LucideIcon,
 } from "lucide-react";
 import type { Faq } from "@/components/ui/FaqSection";
@@ -28,15 +18,17 @@ import type { Faq } from "@/components/ui/FaqSection";
 /** Tabs under the hero — labels match the footer's Insurance column. */
 export const insuranceTabs = [
   { id: "compare", label: "Compare Insurance" },
-  { id: "personal", label: "Personal Vehicle Insurance" },
-  { id: "commercial", label: "Commercial & Fleet Insurance" },
-  { id: "coverage-guide", label: "Coverage Guide" },
+  { id: "personal", label: "Personal Vehicle Insurance", href: "/personal-vehicle-insurance" },
+  { id: "commercial", label: "Commercial & Fleet Insurance", href: "/commercial-and-fleet-insurance" },
+  { id: "coverage-guide", label: "Coverage Guide", href: "/coverage-guide" },
   { id: "partners", label: "Insurance Partners" },
   { id: "help", label: "Insurance Help" },
   { id: "disclosures", label: "Insurance Disclosures" },
 ] as const;
 export type TabId = (typeof insuranceTabs)[number]["id"];
-export const isTabId = (v: string | undefined): v is TabId => insuranceTabs.some((t) => t.id === v);
+/** Tabs shown in place on Compare Insurance (the rest have their own page). */
+export type InPageTabId = Exclude<(typeof insuranceTabs)[number], { href: string }>["id"];
+export const isInPageTabId = (v: string | undefined): v is InPageTabId => insuranceTabs.some((t) => t.id === v && !("href" in t));
 
 export type InfoPanel = {
   eyebrow: string;
@@ -47,63 +39,7 @@ export type InfoPanel = {
   checklist: string[];
 };
 
-export const panels: Record<Exclude<TabId, "compare">, InfoPanel> = {
-  personal: {
-    eyebrow: "Personal Vehicle Insurance",
-    title: "Cover for the vehicle you drive every day",
-    intro:
-      "Personal policies cover private use such as commuting and leisure. The cover levels available, and what each includes, depend on your market and the insurer.",
-    cards: [
-      { title: "Third-party / liability", text: "Covers injury or damage you cause to other people and their property. Usually the legal minimum.", icon: ShieldCheck },
-      { title: "Third-party, fire and theft", text: "Adds cover if your vehicle is stolen or damaged by fire, where offered.", icon: Flame },
-      { title: "Comprehensive", text: "Can also cover damage to your own vehicle, subject to the excess and exclusions.", icon: Umbrella },
-    ],
-    checklistTitle: "What can affect the price",
-    checklist: [
-      "Where the vehicle is kept and how far it's driven",
-      "The vehicle's value, power and security",
-      "Who drives it and their driving history",
-      "The excess you choose and any optional extras",
-    ],
-  },
-  commercial: {
-    eyebrow: "Commercial & Fleet Insurance",
-    title: "Cover for vehicles used for work",
-    intro:
-      "Using a vehicle for business usually needs business or commercial cover. Fleet policies can cover several vehicles under one agreement, often with flexible driver rules.",
-    cards: [
-      { title: "Business use", text: "Covers driving for work beyond commuting — such as visiting clients or other sites.", icon: Briefcase },
-      { title: "Commercial vehicles", text: "Vans, pickups and other work vehicles, including options for tools or goods carried.", icon: Truck },
-      { title: "Fleet policies", text: "Several vehicles on one policy, with named-driver or any-driver options where offered.", icon: Car },
-    ],
-    checklistTitle: "Have this ready before comparing",
-    checklist: [
-      "How each vehicle is used and by whom",
-      "Number and type of vehicles",
-      "Where vehicles are kept overnight",
-      "Any previous claims on the business's vehicles",
-    ],
-  },
-  "coverage-guide": {
-    eyebrow: "Coverage Guide",
-    title: "Key insurance terms, explained",
-    intro: "Policy wording varies by insurer and market. These general definitions help you read a policy — the insurer's documents always take priority.",
-    cards: [
-      { title: "Liability / third-party", text: "Cover for injury or damage you cause to others. Required by law in most markets.", icon: ShieldCheck },
-      { title: "Collision / own damage", text: "Pays towards repairing your vehicle after an accident, minus the excess.", icon: CarFront },
-      { title: "Excess / deductible", text: "The part of a claim you pay yourself. A voluntary excess can lower the premium.", icon: Coins },
-      { title: "Exclusions", text: "What the policy won't cover — such as unlisted drivers, certain uses or modifications.", icon: Ban },
-      { title: "Optional protection", text: "Extras such as breakdown, legal cover or a courtesy car, where available.", icon: ShieldPlus },
-      { title: "No-claims discount", text: "A reduction for claim-free years, where offered. Rules and protection options vary.", icon: BadgePercent },
-    ],
-    checklistTitle: "Before you buy, check",
-    checklist: [
-      "The cover level and its limits",
-      "The total excess — compulsory plus voluntary",
-      "Material exclusions and who can drive",
-      "Whether paying monthly adds interest",
-    ],
-  },
+export const panels: Record<Exclude<InPageTabId, "compare">, InfoPanel> = {
   partners: {
     eyebrow: "Insurance Partners",
     title: "Who could provide a policy",

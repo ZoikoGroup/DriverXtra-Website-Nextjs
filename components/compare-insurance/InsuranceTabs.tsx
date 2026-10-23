@@ -1,21 +1,21 @@
 "use client";
 
-import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { ArrowRight, Check } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import SectionTitle, { container } from "@/components/ui/SectionTitle";
-import { insuranceTabs, panels, type InfoPanel, type TabId } from "./data";
+import InsuranceTabBar from "./InsuranceTabBar";
+import { panels, type InPageTabId, type InfoPanel, type TabId } from "./data";
 
 type Props = {
-  initialTab: TabId;
+  initialTab: InPageTabId;
   /** Content of the "Compare Insurance" tab (rendered on the server). */
   children: ReactNode;
 };
 
 export default function InsuranceTabs({ initialTab, children }: Props) {
-  const [tab, setTab] = useState<TabId>(initialTab);
+  const [tab, setTab] = useState<InPageTabId>(initialTab);
   const barRef = useRef<HTMLDivElement>(null);
-  const tabRefs = useRef<Partial<Record<TabId, HTMLButtonElement | null>>>({});
   const mounted = useRef(false);
 
   // Bring the panel's start into view if the visitor had scrolled past the tab bar.
@@ -27,8 +27,9 @@ export default function InsuranceTabs({ initialTab, children }: Props) {
     if (window.scrollY > top - headerOffset) window.scrollTo({ top: top - headerOffset, behavior: "smooth" });
   };
 
+  // The bar only calls this for tabs without their own page.
   const select = (id: TabId) => {
-    setTab(id);
+    setTab(id as InPageTabId);
     window.history.replaceState(null, "", id === "compare" ? window.location.pathname : `${window.location.pathname}?tab=${id}`);
     revealPanel();
   };
@@ -43,50 +44,13 @@ export default function InsuranceTabs({ initialTab, children }: Props) {
     revealPanel();
   }, [initialTab]);
 
-  // Keep the active tab visible in the scrollable bar on small screens.
-  useEffect(() => {
-    tabRefs.current[tab]?.scrollIntoView({ block: "nearest", inline: "nearest", behavior: "smooth" });
-  }, [tab]);
-
-  const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
-    const i = insuranceTabs.findIndex((t) => t.id === tab);
-    const next = insuranceTabs[(i + (e.key === "ArrowRight" ? 1 : -1) + insuranceTabs.length) % insuranceTabs.length].id;
-    select(next);
-    tabRefs.current[next]?.focus();
-  };
-
   return (
     <div>
-      <div ref={barRef} className="sticky top-14 z-20 border-b border-slate-200 bg-white/95 backdrop-blur lg:top-[104px]">
-        <div role="tablist" aria-label="Insurance" onKeyDown={onKeyDown} className={`${container} flex gap-6 overflow-x-auto [scrollbar-width:none]`}>
-          {insuranceTabs.map(({ id, label }) => {
-            const active = id === tab;
-            return (
-              <button
-                key={id}
-                ref={(el) => {
-                  tabRefs.current[id] = el;
-                }}
-                type="button"
-                role="tab"
-                id={`tab-${id}`}
-                aria-selected={active}
-                aria-controls={`panel-${id}`}
-                tabIndex={active ? 0 : -1}
-                onClick={() => select(id)}
-                className={`relative shrink-0 py-4 text-[13px] font-semibold whitespace-nowrap transition-colors after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:transition-transform after:duration-300 ${
-                  active ? "text-ink after:scale-x-100 after:bg-brand" : "text-slate-600 after:scale-x-0 after:bg-slate-300 hover:text-ink hover:after:scale-x-100"
-                }`}
-              >
-                {label}
-              </button>
-            );
-          })}
-        </div>
+      <div ref={barRef}>
+        <InsuranceTabBar active={tab} onSelect={select} />
       </div>
 
-      <div key={tab} role="tabpanel" id={`panel-${tab}`} aria-labelledby={`tab-${tab}`} className="animate-fade-up">
+      <div key={tab} className="animate-fade-up">
         {tab === "compare" ? children : <Panel panel={panels[tab]} onExplore={() => select("compare")} />}
       </div>
     </div>
