@@ -213,14 +213,14 @@ function MegaPanel({
             </h3>
 
             <ul className="mt-4 space-y-0.5">
-              {col.items.map(({ label, icon: Icon, note }, i) => (
+              {col.items.map(({ label, icon: Icon, note, href }, i) => (
                 <li
                   key={label}
                   className="mega-stagger"
                   style={delay(120 + c * 60 + i * 35)}
                 >
                   <Link
-                    href={hrefFor(label)}
+                    href={href ?? hrefFor(label)}
                     onClick={onNavigate}
                     tabIndex={isOpen ? 0 : -1}
                     className="group/item -mx-2 flex items-center gap-3 rounded-lg px-2 py-2 transition-all duration-300 hover:bg-brand-light/70"

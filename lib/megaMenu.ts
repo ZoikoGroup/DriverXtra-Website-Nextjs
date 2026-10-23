@@ -97,6 +97,8 @@ export type MegaItem = {
   icon: LucideIcon;
   /** Small grey caption under the label, e.g. "Signed in". */
   note?: string;
+  /** Overrides the label lookup when one label means different pages in different menus. */
+  href?: string;
 };
 
 export type MegaColumn = {
@@ -362,7 +364,7 @@ export const megaMenus: MegaMenu[] = [
         items: [
           { label: "Compare Insurance", icon: FileSearch },
           { label: "Vehicle Insurance", icon: Car },
-          { label: "Commercial & Fleet", icon: Truck },
+          { label: "Commercial & Fleet", icon: Truck, href: "/commercial-and-fleet-insurance" },
           { label: "EV Cover", icon: PlugZap, note: "Where available" },
         ],
       },
@@ -397,7 +399,7 @@ export const megaMenus: MegaMenu[] = [
         title: "Help",
         items: [
           { label: "Insurance FAQs", icon: MessageCircleQuestionMark },
-          { label: "Glossary", icon: BookOpen },
+          { label: "Glossary", icon: BookOpen, href: "/coverage-guide#glossary" },
           { label: "Consumer Disclosures", icon: FileCheck2 },
           { label: "Support", icon: Headphones },
         ],

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import FaqSection from "@/components/ui/FaqSection";
 import Reveal from "@/components/ui/Reveal";
 import BgImage from "@/components/ui/BgImage";
@@ -8,7 +9,7 @@ import SectionTitle, { Eyebrow, container } from "@/components/ui/SectionTitle";
 import CompareCards from "@/components/compare-insurance/CompareCards";
 import InsuranceWizard from "@/components/compare-insurance/InsuranceWizard";
 import InsuranceTabs from "@/components/compare-insurance/InsuranceTabs";
-import { faqs, fairness, howItWorks, isTabId } from "@/components/compare-insurance/data";
+import { faqs, fairness, howItWorks, isInPageTabId } from "@/components/compare-insurance/data";
 import { hrefFor } from "@/lib/navigation";
 
 export const metadata: Metadata = {
@@ -18,6 +19,10 @@ export const metadata: Metadata = {
 
 export default async function CompareInsurancePage({ searchParams }: { searchParams: Promise<{ tab?: string }> }) {
   const { tab } = await searchParams;
+  // Tabs that became their own page (old ?tab= links).
+  if (tab === "personal") redirect("/personal-vehicle-insurance");
+  if (tab === "commercial") redirect("/commercial-and-fleet-insurance");
+  if (tab === "coverage-guide") redirect("/coverage-guide");
 
   return (
     <>
@@ -56,7 +61,7 @@ export default async function CompareInsurancePage({ searchParams }: { searchPar
         </div>
       </section>
 
-      <InsuranceTabs initialTab={isTabId(tab) ? tab : "compare"}>
+      <InsuranceTabs initialTab={isInPageTabId(tab) ? tab : "compare"}>
         <section id="how-it-works" className="scroll-mt-40 bg-white pt-16 pb-12">
           <div className={container}>
             <SectionTitle eyebrow="How it works" title="Four steps, no personal data" />
@@ -84,7 +89,7 @@ export default async function CompareInsurancePage({ searchParams }: { searchPar
             <Reveal delay={150}>
               <p className="mt-2 text-sm text-slate-500">
                 Tap a card to see what it means. Full definitions are in the{" "}
-                <Link href={hrefFor("Coverage Guide")} scroll={false} className="link-underline font-medium text-ink underline underline-offset-4 hover:text-gold">
+                <Link href={hrefFor("Coverage Guide")} className="link-underline font-medium text-ink underline underline-offset-4 hover:text-gold">
                   Coverage Guide
                 </Link>
                 .
