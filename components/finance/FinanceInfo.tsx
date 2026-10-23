@@ -1,4 +1,5 @@
-import { CalendarDays, CreditCard, TriangleAlert, type LucideIcon } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, CalendarDays, CreditCard, TriangleAlert, type LucideIcon } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import SectionTitle, { container } from "@/components/ui/SectionTitle";
 
@@ -74,6 +75,13 @@ export function FinanceDisclosures() {
               and are not offers. Comparing options on DriverXtra is not an application and doesn&apos;t involve a credit
               check.
             </p>
+            <Link
+              href="/finance-disclosures"
+              className="group inline-flex items-center gap-1.5 font-semibold text-ink underline underline-offset-4 transition-colors hover:text-gold"
+            >
+              Read the full finance disclosures
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
             <p className="text-xs text-slate-400">
               Example provider data for design review. Regulatory status statements must be confirmed by Legal for each
               market before launch.
