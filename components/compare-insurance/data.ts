@@ -1,13 +1,5 @@
 import {
-  Bookmark,
-  Building2,
   Car,
-  ClipboardList,
-  FileText,
-  Handshake,
-  Info,
-  Lock,
-  MessageCircle,
   Scale,
   Tag,
   TriangleAlert,
@@ -15,85 +7,20 @@ import {
 } from "lucide-react";
 import type { Faq } from "@/components/ui/FaqSection";
 
-/** Tabs under the hero — labels match the footer's Insurance column. */
+/** Insurance tab bar — each tab is its own page; labels match the footer's Insurance column. */
 export const insuranceTabs = [
-  { id: "compare", label: "Compare Insurance" },
+  { id: "compare", label: "Compare Insurance", href: "/compare-insurance" },
   { id: "personal", label: "Personal Vehicle Insurance", href: "/personal-vehicle-insurance" },
   { id: "commercial", label: "Commercial & Fleet Insurance", href: "/commercial-and-fleet-insurance" },
   { id: "coverage-guide", label: "Coverage Guide", href: "/coverage-guide" },
-  { id: "partners", label: "Insurance Partners" },
-  { id: "help", label: "Insurance Help" },
-  { id: "disclosures", label: "Insurance Disclosures" },
+  { id: "partners", label: "Insurance Partners", href: "/insurance-partners" },
+  { id: "help", label: "Insurance Help", href: "/insurance-help" },
+  { id: "disclosures", label: "Insurance Disclosures", href: "/insurance-disclosures" },
 ] as const;
 export type TabId = (typeof insuranceTabs)[number]["id"];
-/** Tabs shown in place on Compare Insurance (the rest have their own page). */
-export type InPageTabId = Exclude<(typeof insuranceTabs)[number], { href: string }>["id"];
-export const isInPageTabId = (v: string | undefined): v is InPageTabId => insuranceTabs.some((t) => t.id === v && !("href" in t));
 
-export type InfoPanel = {
-  eyebrow: string;
-  title: string;
-  intro: string;
-  cards: { title: string; text: string; icon: LucideIcon }[];
-  checklistTitle: string;
-  checklist: string[];
-};
-
-export const panels: Record<Exclude<InPageTabId, "compare">, InfoPanel> = {
-  partners: {
-    eyebrow: "Insurance Partners",
-    title: "Who could provide a policy",
-    intro:
-      "Where comparison is supported, options would come from regulated insurers and brokers. No insurance providers are connected in this demonstration.",
-    cards: [
-      { title: "Insurers", text: "Carry the risk, set the price and terms, and pay valid claims.", icon: Building2 },
-      { title: "Brokers", text: "Arrange policies from one or more insurers and may charge their own fees.", icon: Handshake },
-      { title: "DriverXtra", text: "Not an insurer. We'd explain options and refer you to the named provider.", icon: Info },
-    ],
-    checklistTitle: "Every partner profile would show",
-    checklist: [
-      "Legal name and regulatory status in your market",
-      "Its role — insurer, broker or intermediary",
-      "Whether DriverXtra receives a fee",
-      "The products it offers where you live",
-    ],
-  },
-  help: {
-    eyebrow: "Insurance Help",
-    title: "Help with your vehicle insurance",
-    intro: "Your insurer handles policy changes, claims and complaints. Here's who to contact, and when.",
-    cards: [
-      { title: "Changing your policy", text: "Contact your insurer about a new vehicle, address or driver. Fees may apply.", icon: FileText },
-      { title: "Making a claim", text: "Report an incident to your insurer as soon as you can, with photos and details.", icon: ClipboardList },
-      { title: "Complaints", text: "Start with the insurer's complaints process. Your market may have an independent ombudsman.", icon: MessageCircle },
-    ],
-    checklistTitle: "Keep these to hand",
-    checklist: [
-      "Your policy number and documents",
-      "The insurer's claims and complaints contacts",
-      "Photos and details of any incident",
-      "Your renewal date — prices can change at renewal",
-    ],
-  },
-  disclosures: {
-    eyebrow: "Insurance Disclosures",
-    title: "Important information about this service",
-    intro:
-      "DriverXtra is not an insurer and doesn't give insurance advice. Policies would be provided by the regulated third parties named on each option, subject to their terms.",
-    cards: [
-      { title: "Referral fees", text: "We may receive a fee if you continue to some providers. Each profile says whether this applies.", icon: Bookmark },
-      { title: "Your information", text: "This demo doesn't collect personal data. Any future sharing would need your approval first.", icon: Lock },
-      { title: "Ordering", text: "Results would use a published, neutral method — paid placements labelled “Sponsored”.", icon: Scale },
-    ],
-    checklistTitle: "Always review",
-    checklist: [
-      "The insurer's policy wording and summary",
-      "Its privacy notice",
-      "Cancellation rights and fees",
-      "Regulatory status — to be confirmed by Legal per market before launch",
-    ],
-  },
-};
+/** Old /compare-insurance?tab=… links, from when these were in-page tabs. */
+export const legacyTabHref = (tab: string | undefined) => insuranceTabs.find((t) => t.id === tab && t.id !== "compare")?.href;
 
 export const howItWorks = [
   { title: "Market", text: "Where the vehicle is kept and used" },
