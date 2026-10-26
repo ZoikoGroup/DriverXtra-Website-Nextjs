@@ -200,7 +200,7 @@ function MegaPanel({
             className="group/col px-3 pt-6 pb-5 xl:px-5"
           >
             <h3
-              className={`mega-stagger text-[20px] leading-none font-bold text-ink ${
+              className={`mega-stagger text-[18px] leading-none font-bold text-ink ${
                 menu.uppercaseTitles
                   ? "tracking-wide uppercase"
                   : ""
