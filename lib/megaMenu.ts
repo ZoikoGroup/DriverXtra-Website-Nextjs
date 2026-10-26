@@ -383,7 +383,7 @@ export const megaMenus: MegaMenu[] = [
           { label: "Coverage Guide", icon: BookOpen },
           { label: "Exclusions & Excess / Deductible", icon: ClipboardList },
           { label: "What Affects Price", icon: ChartColumn },
-          { label: "Claims Basics", icon: FileCheck2 },
+          { label: "Claims Basics", icon: FileCheck2, href: "/insurance-help?topic=claims" },
         ],
       },
       {
@@ -400,8 +400,8 @@ export const megaMenus: MegaMenu[] = [
         items: [
           { label: "Insurance FAQs", icon: MessageCircleQuestionMark },
           { label: "Glossary", icon: BookOpen, href: "/coverage-guide#glossary" },
-          { label: "Consumer Disclosures", icon: FileCheck2 },
-          { label: "Support", icon: Headphones },
+          { label: "Consumer Disclosures", icon: FileCheck2, href: "/insurance-disclosures" },
+          { label: "Support", icon: Headphones, href: "/insurance-help#issue-router" },
         ],
       },
     ],
