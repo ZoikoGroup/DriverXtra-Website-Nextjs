@@ -330,6 +330,12 @@ const pageLinks: Record<string, string> = {
   "Term Comparison": "/compare-vehicle-finance",
   "Finance FAQs": "/compare-vehicle-finance#finance-faqs",
   // Automotive services
+  "Inspection & Appraisal": "/inspection-appraisal",
+  "Book an Inspection": "/inspection-appraisal#assessment-request",
+  "Maintenance & Repair": "/maintenance-repair",
+  "Tires & Installation": "/tires-installation",
+  "Vehicle Transport & Shipping": "/vehicle-transport-shipping",
+  "Transport & Shipping": "/vehicle-transport-shipping",
   "Detailing & Cosmetics": "/detailing-and-cosmetics",
   Storage: "/storage",
   "Roadside Assistance": "/roadside-assistance",
