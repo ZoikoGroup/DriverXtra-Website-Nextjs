@@ -419,9 +419,9 @@ export const megaMenus: MegaMenu[] = [
       {
         title: "Care & Repair",
         items: [
-          { label: "Maintenance & Repair", icon: Wrench },
-          { label: "Inspection & Appraisal", icon: FileSearch },
-          { label: "Tires & Installation", icon: CircleDot },
+          { label: "Maintenance & Repair", icon: Wrench, href: "/maintenance-repair" },
+          { label: "Inspection & Appraisal", icon: FileSearch, href: "/inspection-appraisal" },
+          { label: "Tires & Installation", icon: CircleDot, href: "/tires-installation" },
           { label: "Diagnostics", icon: Cpu },
           { label: "Detailing & Cosmetics", icon: SprayCan },
         ],
@@ -429,7 +429,7 @@ export const megaMenus: MegaMenu[] = [
       {
         title: "Move & Protect",
         items: [
-          { label: "Transport & Shipping", icon: Truck },
+          { label: "Transport & Shipping", icon: Truck, href: "/vehicle-transport-shipping" },
           { label: "Roadside Assistance", icon: TriangleAlert },
           { label: "Storage", icon: Warehouse },
           { label: "Warranties & Protection", icon: ShieldCheck },
