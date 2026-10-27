@@ -39,7 +39,7 @@ export default function MaintenanceRepairPage() {
         imageAlt="A mechanic working on a car engine"
       />
 
-      <ServicesTabBar active="maintenance" />
+      <ServicesTabBar active="Maintenance & Repair" />
 
       <ServiceSection id="help-types" className="bg-slate-50">
         <SectionTitle

@@ -39,7 +39,7 @@ export default function InspectionAppraisalPage() {
         imageAlt="A technician inspecting a car in a workshop"
       />
 
-      <ServicesTabBar active="inspection" />
+      <ServicesTabBar active="Inspection & Appraisal" />
 
       <ServiceSection id="kinds-of-assessment" className="bg-slate-50">
         <SectionTitle

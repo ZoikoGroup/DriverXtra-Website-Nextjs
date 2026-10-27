@@ -41,7 +41,7 @@ export default function VehicleTransportShippingPage() {
         imageAlt="A covered lorry driving along a mountain road"
       />
 
-      <ServicesTabBar active="transport" />
+      <ServicesTabBar active="Vehicle Transport & Shipping" />
 
       <ServiceSection id="your-situation">
         <SectionTitle

@@ -32,7 +32,7 @@ export default function TiresInstallationPage() {
         imageAlt="A close-up of a car tire and alloy wheel"
       />
 
-      <ServicesTabBar active="tires" />
+      <ServicesTabBar active="Tires & Installation" />
 
       <ServiceSection id="find-tires">
         <SectionTitle
