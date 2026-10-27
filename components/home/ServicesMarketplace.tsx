@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import {
   ArrowRight,
@@ -50,6 +51,13 @@ const services: Service[] = [
   { label: "Roadside", icon: CircleAlert },
   { label: "Tires & Installation", icon: Disc3 },
 ];
+
+// Categories that have their own service page.
+const servicePages: Record<string, { label: string; href: string }> = {
+  Detailing: { label: "detailing & cosmetics", href: "/detailing-and-cosmetics" },
+  Storage: { label: "vehicle storage", href: "/storage" },
+  Roadside: { label: "roadside assistance", href: "/roadside-assistance" },
+};
 
 const providers: Provider[] = [
   {
@@ -323,6 +331,14 @@ export default function ServicesMarketplace() {
                   >
                     Clear
                   </button>
+                  {servicePages[selectedService] && (
+                    <Link
+                      href={servicePages[selectedService].href}
+                      className="ml-3 font-semibold text-[#B98200] underline underline-offset-2 transition-colors hover:text-[#171F32]"
+                    >
+                      Explore {servicePages[selectedService].label}
+                    </Link>
+                  )}
                 </p>
               )}
             </div>

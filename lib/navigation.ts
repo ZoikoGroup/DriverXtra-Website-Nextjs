@@ -329,6 +329,11 @@ const pageLinks: Record<string, string> = {
   "Fees & Total Cost": "/finance-disclosures#topic-fees-and-charges",
   "Term Comparison": "/compare-vehicle-finance",
   "Finance FAQs": "/compare-vehicle-finance#finance-faqs",
+  // Automotive services
+  "Detailing & Cosmetics": "/detailing-and-cosmetics",
+  Storage: "/storage",
+  "Roadside Assistance": "/roadside-assistance",
+  "Pricing Transparency": "/detailing-and-cosmetics#pricing-transparency",
   // Header / mega-menu banner buttons
   "Sell Vehicle": "/sell-vehicles",
   "Get Your Value": "/value-my-vehicle",
