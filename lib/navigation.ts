@@ -351,7 +351,8 @@ const pageLinks: Record<string, string> = {
   "Dealer Verification":"/dealer-verification",
   "Dealer Analytics":"/dealer-analytics",
   "Lead & CRM Integrations":"/lead-crm-integrations",
-  "Inventory Feeds":"/inventory-feeds"
+  "Inventory Feeds":"/inventory-feeds",
+  "Dealer Support":"/dealer-support"
 };
 
 export const hrefFor = (label: string) => pageLinks[label] ?? "#";
