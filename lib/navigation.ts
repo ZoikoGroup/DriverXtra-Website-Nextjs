@@ -345,6 +345,13 @@ const pageLinks: Record<string, string> = {
   "Get Your Value": "/value-my-vehicle",
   "List a Vehicle": "/list-and-manage",
   "Check Offer Availability": "/instant-offer",
+  // Dealers and retailers footer
+  "Dealer Solutions" :"/dealer-solutions",
+  "Open a Dealer Storefront":"/open-a-dealer-storefront",
+  "Dealer Verification":"/dealer-verification",
+  "Dealer Analytics":"/dealer-analytics",
+  "Lead & CRM Integrations":"/lead-crm-integrations",
+  "Inventory Feeds":"/inventory-feeds"
 };
 
 export const hrefFor = (label: string) => pageLinks[label] ?? "#";
