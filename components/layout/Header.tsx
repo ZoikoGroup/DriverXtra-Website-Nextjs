@@ -63,10 +63,10 @@ export default function Header() {
           </form>
 
           <nav aria-label="Account" className="ml-auto hidden items-center gap-1 sm:flex md:ml-2">
-            {quickActions.map(({ label, icon: Icon }) => (
+            {quickActions.map(({ label, icon: Icon, href }) => (
               <Link
                 key={label}
-                href="#"
+                href={href}
                 className="group flex w-16 flex-col items-center gap-0.5 rounded-lg py-1.5 text-slate-700 transition-colors duration-200 hover:bg-slate-100 hover:text-ink"
               >
                 <Icon className="h-[18px] w-[18px] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-110" />

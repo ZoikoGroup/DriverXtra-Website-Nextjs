@@ -67,10 +67,11 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
           </form>
 
           <div className="mt-4 grid grid-cols-3 gap-2 sm:hidden">
-            {quickActions.map(({ label, icon: Icon }) => (
+            {quickActions.map(({ label, icon: Icon, href }) => (
               <Link
                 key={label}
-                href="#"
+                href={href}
+                onClick={onClose}
                 className="flex flex-col items-center gap-1 rounded-xl border border-slate-200 py-3 text-xs font-medium transition-colors hover:border-brand hover:bg-brand-light"
               >
                 <Icon className="h-5 w-5" />
