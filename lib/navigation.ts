@@ -352,7 +352,17 @@ const pageLinks: Record<string, string> = {
   "Dealer Analytics":"/dealer-analytics",
   "Lead & CRM Integrations":"/lead-crm-integrations",
   "Inventory Feeds":"/inventory-feeds",
-  "Dealer Support":"/dealer-support"
+  "Dealer Support":"/dealer-support",
+  // Fleets & Enterprise footer + header "For Business" menu
+  "Fleet Solutions": "/fleet-solutions",
+  "Fleet Acquisition": "/fleet-acquisition",
+  "Bulk Acquisition": "/fleet-acquisition",
+  "Fleet Disposition": "/fleet-disposition",
+  "Vehicle Disposition": "/fleet-disposition",
+  "Maintenance Networks": "/maintenance-networks",
+  "Parts Procurement": "/parts-procurement",
+  "Lifecycle Analytics": "/lifecycle-analytics",
+  "Enterprise Contact": "/enterprise-contact",
 };
 
 export const hrefFor = (label: string) => pageLinks[label] ?? "#";
