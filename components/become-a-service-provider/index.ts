@@ -1,0 +1,9 @@
+export { default as BecomeServiceProviderHero } from "./BecomeServiceProviderHero";
+export { default as BuiltForAutomotiveServiceBusinessesSection } from "./BuiltForAutomotiveServiceBusinessesSection";
+export { default as CheckEligibilitySection } from "./CheckEligibilitySection";
+export { default as KnowWhatYouWillNeedSection } from "./KnowWhatYouWillNeedSection";
+export { default as ProviderOnboardingStepsSection } from "./ProviderOnboardingStepsSection";
+export { default as AgreeWorkBeforeItBeginsSection } from "./AgreeWorkBeforeItBeginsSection";
+export { default as ServiceAreaAndSafetySection } from "./ServiceAreaAndSafetySection";
+export { default as TransparentTermsSection } from "./TransparentTermsSection";
+export { default as BecomeServiceProviderFaqSection } from "./BecomeServiceProviderFaqSection";

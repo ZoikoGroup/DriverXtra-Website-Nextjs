@@ -1,0 +1,9 @@
+export { default as OemDistributorHeroSection } from "./OemDistributorHeroSection";
+export { default as ForOrganizationsUnderOwnRightsSection } from "./ForOrganizationsUnderOwnRightsSection";
+export { default as SelectOrganizationRoleSection } from "./SelectOrganizationRoleSection";
+export { default as WhatYouMayBeAskedToSubstantiateSection } from "./WhatYouMayBeAskedToSubstantiateSection";
+export { default as RightsScopeSection } from "./RightsScopeSection";
+export { default as OemCatalogRightsStepsSection } from "./OemCatalogRightsStepsSection";
+export { default as RightsConflictsAndChangesSection } from "./RightsConflictsAndChangesSection";
+export { default as OemCommercialTermsSection } from "./OemCommercialTermsSection";
+export { default as OemDistributorFaqSection } from "./OemDistributorFaqSection";

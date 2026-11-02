@@ -352,7 +352,11 @@ const pageLinks: Record<string, string> = {
   "Dealer Analytics":"/dealer-analytics",
   "Lead & CRM Integrations":"/lead-crm-integrations",
   "Inventory Feeds":"/inventory-feeds",
-  "Dealer Support":"/dealer-support"
+  "Dealer Support":"/dealer-support",
+  // Providers and parts sellers
+  "Become a Service Provider" :"/become-a-service-provider",
+  "Become a Parts Seller":"/become-a-parts-seller",
+  "OEM & Distributor Program":"/oem-distributer-program"
 };
 
 export const hrefFor = (label: string) => pageLinks[label] ?? "#";
