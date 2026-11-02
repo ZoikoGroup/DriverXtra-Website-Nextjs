@@ -357,6 +357,16 @@ const pageLinks: Record<string, string> = {
   "Become a Service Provider" :"/become-a-service-provider",
   "Become a Parts Seller":"/become-a-parts-seller",
   "OEM & Distributor Program":"/oem-distributer-program"
+  // Fleets & Enterprise footer + header "For Business" menu
+  "Fleet Solutions": "/fleet-solutions",
+  "Fleet Acquisition": "/fleet-acquisition",
+  "Bulk Acquisition": "/fleet-acquisition",
+  "Fleet Disposition": "/fleet-disposition",
+  "Vehicle Disposition": "/fleet-disposition",
+  "Maintenance Networks": "/maintenance-networks",
+  "Parts Procurement": "/parts-procurement",
+  "Lifecycle Analytics": "/lifecycle-analytics",
+  "Enterprise Contact": "/enterprise-contact",
 };
 
 export const hrefFor = (label: string) => pageLinks[label] ?? "#";
