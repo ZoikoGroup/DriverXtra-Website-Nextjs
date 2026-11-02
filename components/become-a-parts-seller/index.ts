@@ -1,0 +1,9 @@
+export { default as BecomeAPartsSellerHero } from "./BecomeAPartsSellerHero";
+export { default as BuiltForPartsBusinessesSection } from "./BuiltForPartsBusinessesSection";
+export { default as CheckPartsEligibilitySection } from "./CheckPartsEligibilitySection";
+export { default as ShowUsWhoIsSellingSection } from "./ShowUsWhoIsSellingSection";
+export { default as BetterCatalogDataSection } from "./BetterCatalogDataSection";
+export { default as SellerOnboardingStepsSection } from "./SellerOnboardingStepsSection";
+export { default as YouFulfilUnderStatedTermsSection } from "./YouFulfilUnderStatedTermsSection";
+export { default as TransparentSellerTermsSection } from "./TransparentSellerTermsSection";
+export { default as BecomeAPartsSellerFaqSection } from "./BecomeAPartsSellerFaqSection";
