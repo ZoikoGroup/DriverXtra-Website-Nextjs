@@ -356,7 +356,7 @@ const pageLinks: Record<string, string> = {
   // Providers and parts sellers
   "Become a Service Provider" :"/become-a-service-provider",
   "Become a Parts Seller":"/become-a-parts-seller",
-  "OEM & Distributor Program":"/oem-distributer-program"
+  "OEM & Distributor Program":"/oem-distributer-program",
   // Fleets & Enterprise footer + header "For Business" menu
   "Fleet Solutions": "/fleet-solutions",
   "Fleet Acquisition": "/fleet-acquisition",
