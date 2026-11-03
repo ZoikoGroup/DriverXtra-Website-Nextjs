@@ -1,0 +1,45 @@
+import {
+  BadgeCheck,
+  Building2,
+  CalendarDays,
+  Car,
+  ClipboardCheck,
+  CreditCard,
+  Eye,
+  FileText,
+  Flag,
+  Info,
+  Layers,
+  Lock,
+  Scale,
+  ShieldCheck,
+  Tag,
+  Truck,
+  Umbrella,
+  UserRound,
+  type LucideIcon,
+} from "lucide-react";
+
+/** Icons by name, so data files and client components can share them. */
+export const partnerIcons = {
+  badge: BadgeCheck,
+  building: Building2,
+  calendar: CalendarDays,
+  car: Car,
+  card: CreditCard,
+  clipboard: ClipboardCheck,
+  eye: Eye,
+  file: FileText,
+  flag: Flag,
+  info: Info,
+  layers: Layers,
+  lock: Lock,
+  scale: Scale,
+  shield: ShieldCheck,
+  tag: Tag,
+  truck: Truck,
+  umbrella: Umbrella,
+  user: UserRound,
+} satisfies Record<string, LucideIcon>;
+
+export type PartnerIcon = keyof typeof partnerIcons;

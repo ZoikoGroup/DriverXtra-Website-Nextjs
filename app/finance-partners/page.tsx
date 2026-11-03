@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import FaqSection from "@/components/ui/FaqSection";
 import Reveal from "@/components/ui/Reveal";
 import BgImage from "@/components/ui/BgImage";
@@ -79,6 +81,15 @@ export default async function FinancePartnersPage({ searchParams }: PageProps) {
               </Reveal>
             ))}
           </div>
+          <Reveal delay={300}>
+            <Link
+              href="/finance-and-insurance-partners"
+              className="group mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-ink transition-colors hover:text-gold"
+            >
+              Are you a lender or credit intermediary? Explore a partnership
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </Reveal>
         </div>
       </section>
 

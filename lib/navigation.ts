@@ -291,7 +291,7 @@ const pageLinks: Record<string, string> = {
   "Finance Guide": "/finance-guides",
   "Finance Calculator": "/finance-calculator",
   "Finance Partners": "/finance-partners",
-  "Finance & Insurance Partners": "/finance-partners",
+  "Finance & Insurance Partners": "/finance-and-insurance-partners",
   "Partner Eligibility": "/finance-partners#participating-providers",
   "Partner Standards": "/finance-partners#how-we-work",
   "Lenders": "/finance-partners",
@@ -357,6 +357,8 @@ const pageLinks: Record<string, string> = {
   "Become a Service Provider" :"/become-a-service-provider",
   "Become a Parts Seller":"/become-a-parts-seller",
   "OEM & Distributor Program":"/oem-distributer-program",
+  "Inspection Partner Program": "/inspection-partner-program",
+  "Transport Partner Program": "/transport-partner-program",
   // Fleets & Enterprise footer + header "For Business" menu
   "Fleet Solutions": "/fleet-solutions",
   "Fleet Acquisition": "/fleet-acquisition",
