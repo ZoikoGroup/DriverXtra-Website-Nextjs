@@ -5,6 +5,7 @@ import {
   Car,
   Check,
   ClipboardCheck,
+  Clock,
   CreditCard,
   Eye,
   FileText,
@@ -16,11 +17,13 @@ import {
   MessageSquare,
   Scale,
   ShieldCheck,
+  ShoppingCart,
   Tag,
   Truck,
   Umbrella,
   UserRound,
   Wrench,
+  Zap,
   type LucideIcon,
 } from "lucide-react";
 
@@ -30,9 +33,11 @@ export const partnerIcons = {
   building: Building2,
   calendar: CalendarDays,
   car: Car,
+  cart: ShoppingCart,
   check: Check,
   card: CreditCard,
   clipboard: ClipboardCheck,
+  clock: Clock,
   eye: Eye,
   file: FileText,
   flag: Flag,
@@ -48,6 +53,7 @@ export const partnerIcons = {
   umbrella: Umbrella,
   user: UserRound,
   wrench: Wrench,
+  zap: Zap,
 } satisfies Record<string, LucideIcon>;
 
 export type PartnerIcon = keyof typeof partnerIcons;

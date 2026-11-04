@@ -29,7 +29,7 @@ export function PartnerHero({
   badges: { icon: PartnerIcon; title: string; text: string }[];
   /** `crop` (an aspect-ratio class) shows the image cropped to that shape instead of its natural size. */
   image: { src: string; alt: string; width: number; height: number; crop?: string };
-  actions: { primary: { label: string; href: string }; secondary: { label: string; href: string } };
+  actions?: { primary: { label: string; href: string }; secondary: { label: string; href: string } };
 }) {
   return (
     <section className="relative overflow-hidden bg-navy text-white">
@@ -64,6 +64,7 @@ export function PartnerHero({
               );
             })}
           </div>
+          {actions && (
           <Reveal delay={600}>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
@@ -80,6 +81,7 @@ export function PartnerHero({
               </Link>
             </div>
           </Reveal>
+          )}
         </div>
         <Reveal direction="left" delay={200}>
           <div className="group relative animate-float-slow">

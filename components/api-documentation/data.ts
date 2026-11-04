@@ -263,7 +263,7 @@ export const faqs: Faq[] = [
   { q: "Where are error codes explained?", a: "In each operation's Errors section and in the Errors guide." },
   { q: "Are there rate limits or usage quotas?", a: "Where limits are documented they're shown under Limits. If a limit isn't specified, confirm current terms before relying on any assumed limit." },
   { q: "How do pagination and retries work?", a: "List operations use cursors. Retry only where the reference says it's safe, with backoff." },
-  { q: "Where do I find webhook information?", a: "Webhooks have their own reference, reached through the Developer Hub." },
+  { q: "Where do I find webhook information?", a: "Webhooks have their own reference page, covering event families, signatures and delivery semantics." },
   { q: "What happens when an API version is deprecated?", a: "It keeps working for a published period before retirement. Move to the current version before then." },
   { q: "How do I report unclear documentation?", a: "Use the feedback at the end of each page, or report a problem from the Developer Hub. Don't include secrets or personal data." },
   { q: "Where can I check whether the platform is operating?", a: "Platform Status shows current and historical component status." },

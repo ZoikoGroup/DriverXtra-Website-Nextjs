@@ -366,6 +366,9 @@ const pageLinks: Record<string, string> = {
   "Developer / Integration Docs": "/developer-hub",
   "API Partners": "/developer-hub#request-access",
   "API Documentation": "/api-documentation",
+  "Webhooks": "/webhooks",
+  "Order & Booking Integrations": "/order-and-booking-integrations",
+  "Platform Status": "/platform-status",
   // Fleets & Enterprise footer + header "For Business" menu
   "Fleet Solutions": "/fleet-solutions",
   "Fleet Acquisition": "/fleet-acquisition",

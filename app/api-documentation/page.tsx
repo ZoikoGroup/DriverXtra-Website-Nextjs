@@ -81,10 +81,12 @@ export default function ApiDocumentationPage() {
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {destinations.map(({ label, text, icon, image, alt }, i) => {
               const Icon = icons[icon];
+              // Pages that aren't built yet are reached through the Developer Hub directory.
+              const own = hrefFor(label) !== "#";
               return (
                 <Reveal key={label} delay={i * 100} className="h-full">
                   <Link
-                    href={`${hrefFor("Developer Hub")}#integration-routes`}
+                    href={own ? hrefFor(label) : `${hrefFor("Developer Hub")}#integration-routes`}
                     className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-500 hover:-translate-y-1.5 hover:border-brand/60 hover:shadow-[0_24px_48px_-20px_rgba(15,23,42,0.3)]"
                   >
                     <span className="relative block aspect-[242/105] overflow-hidden">
@@ -97,7 +99,7 @@ export default function ApiDocumentationPage() {
                       <span className="text-[14px] font-bold text-ink transition-colors group-hover:text-gold">{label}</span>
                       <span className="mt-1.5 flex-1 text-[13px] text-slate-600">{text}</span>
                       <span className="mt-3 inline-flex items-center gap-1.5 text-[13px] font-semibold text-blue-700">
-                        Via Developer Hub <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                        {own ? `Open ${label}` : "Via Developer Hub"} <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
                       </span>
                     </span>
                   </Link>
