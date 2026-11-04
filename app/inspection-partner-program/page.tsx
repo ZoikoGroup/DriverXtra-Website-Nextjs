@@ -5,7 +5,7 @@ import SectionTitle, { container } from "@/components/ui/SectionTitle";
 import { hrefFor } from "@/lib/navigation";
 import RoleCards from "@/components/partner-program/RoleCards";
 import EligibilityChecker, { MarketName } from "@/components/partner-program/EligibilityChecker";
-import { IconCards, NumberedSteps, PartnerHero, RelatedPartnerLinks, RequirementsGrid, StagesNotice, TableWithNote, TickList } from "@/components/partner-program/sections";
+import { HorizontalSteps, IconCards, NumberedSteps, PartnerHero, RelatedPartnerLinks, RequirementsGrid, StagesNotice, TableWithNote, TickList } from "@/components/partner-program/sections";
 import ReviewsCallout from "@/components/inspection-partner-program/ReviewsCallout";
 import {
   applicantGates,
@@ -144,22 +144,7 @@ export default function InspectionPartnerProgramPage() {
       <section id="booking" className="scroll-mt-28 bg-white py-16">
         <div className={container}>
           <SectionTitle eyebrow="Booking" title="Keep availability and acceptance distinct." description="Requests are not scheduled until confirmed by the authorized provider." />
-          <ol className="mt-8 grid gap-6 sm:grid-cols-5 sm:gap-0">
-            {bookingSteps.map(({ title, text }, i) => (
-              <Reveal as="li" key={title} delay={i * 100} className="group relative flex gap-4 sm:block sm:pr-4">
-                {i < bookingSteps.length - 1 && (
-                  <span aria-hidden className="absolute top-8 bottom-[-24px] left-[13px] w-px bg-brand/60 sm:top-[13px] sm:right-0 sm:bottom-auto sm:left-9 sm:h-px sm:w-auto" />
-                )}
-                <span className="relative grid h-7 w-7 shrink-0 place-items-center rounded-full bg-ink text-xs font-bold text-brand transition-all duration-300 group-hover:scale-110 group-hover:bg-brand group-hover:text-ink">
-                  {i + 1}
-                </span>
-                <div className="sm:mt-3">
-                  <h3 className="text-[13px] font-bold text-ink transition-colors group-hover:text-gold">{title}</h3>
-                  <p className="mt-0.5 text-[12px] text-slate-600">{text}</p>
-                </div>
-              </Reveal>
-            ))}
-          </ol>
+          <HorizontalSteps steps={bookingSteps} />
           <Reveal delay={200} className="mt-10">
             <ReviewsCallout />
           </Reveal>

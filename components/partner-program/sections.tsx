@@ -27,7 +27,8 @@ export function PartnerHero({
   title: string;
   text: string;
   badges: { icon: PartnerIcon; title: string; text: string }[];
-  image: { src: string; alt: string; width: number; height: number };
+  /** `crop` (an aspect-ratio class) shows the image cropped to that shape instead of its natural size. */
+  image: { src: string; alt: string; width: number; height: number; crop?: string };
   actions: { primary: { label: string; href: string }; secondary: { label: string; href: string } };
 }) {
   return (
@@ -83,15 +84,26 @@ export function PartnerHero({
         <Reveal direction="left" delay={200}>
           <div className="group relative animate-float-slow">
             <div className="pointer-events-none absolute inset-10 rounded-full bg-brand/20 blur-3xl" />
-            <div className="relative overflow-hidden rounded-2xl">
-              <Image
-                src={image.src}
-                alt={image.alt}
-                width={image.width}
-                height={image.height}
-                priority
-                className="h-auto w-full transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-              />
+            <div className={`relative overflow-hidden rounded-2xl ${image.crop ?? ""}`}>
+              {image.crop ? (
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                />
+              ) : (
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={image.width}
+                  height={image.height}
+                  priority
+                  className="h-auto w-full transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                />
+              )}
             </div>
           </div>
         </Reveal>
@@ -308,6 +320,43 @@ export function NumberedSteps({ image, steps }: { image: { src: string; alt: str
   );
 }
 
+// Full class strings per step count, so Tailwind can see them.
+const timelineLayout = {
+  5: {
+    grid: "sm:grid-cols-5 sm:gap-0",
+    item: "sm:block sm:pr-4",
+    line: "sm:top-[13px] sm:right-0 sm:bottom-auto sm:left-9 sm:h-px sm:w-auto",
+    text: "sm:mt-3",
+  },
+  6: {
+    grid: "lg:grid-cols-6 lg:gap-0",
+    item: "lg:block lg:pr-4",
+    line: "lg:top-[13px] lg:right-0 lg:bottom-auto lg:left-9 lg:h-px lg:w-auto",
+    text: "lg:mt-3",
+  },
+};
+
+/** Numbered steps joined by a line — vertical on small screens, horizontal when there's room. */
+export function HorizontalSteps({ steps }: { steps: { title: string; text: string }[] }) {
+  const layout = timelineLayout[steps.length === 6 ? 6 : 5];
+  return (
+    <ol className={`mt-8 grid gap-6 ${layout.grid}`}>
+      {steps.map(({ title, text }, i) => (
+        <Reveal as="li" key={title} delay={i * 100} className={`group relative flex gap-4 ${layout.item}`}>
+          {i < steps.length - 1 && <span aria-hidden className={`absolute top-8 bottom-[-24px] left-[13px] w-px bg-brand/60 ${layout.line}`} />}
+          <span className="relative grid h-7 w-7 shrink-0 place-items-center rounded-full bg-ink text-xs font-bold text-brand transition-all duration-300 group-hover:scale-110 group-hover:bg-brand group-hover:text-ink">
+            {i + 1}
+          </span>
+          <div className={layout.text}>
+            <h3 className="text-[13px] font-bold text-ink transition-colors group-hover:text-gold">{title}</h3>
+            <p className="mt-0.5 text-[12px] text-slate-600">{text}</p>
+          </div>
+        </Reveal>
+      ))}
+    </ol>
+  );
+}
+
 const partnerRoutes = [
   "Become a Service Provider",
   "Inspection Partner Program",
@@ -315,6 +364,7 @@ const partnerRoutes = [
   "Finance & Insurance Partners",
   "Become a Parts Seller",
   "OEM & Distributor Program",
+  "Partner Onboarding",
 ];
 
 /** Links to the other partner routes, leaving out the current page. */
