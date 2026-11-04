@@ -359,6 +359,16 @@ const pageLinks: Record<string, string> = {
   "OEM & Distributor Program":"/oem-distributer-program",
   "Inspection Partner Program": "/inspection-partner-program",
   "Transport Partner Program": "/transport-partner-program",
+  "Partner Onboarding": "/partner-onboarding",
+  "Become a Partner": "/partner-onboarding",
+  // Developers & Integrations footer + header "For Business" menu
+  "Developer Hub": "/developer-hub",
+  "Developer / Integration Docs": "/developer-hub",
+  "API Partners": "/developer-hub#request-access",
+  "API Documentation": "/api-documentation",
+  "Webhooks": "/webhooks",
+  "Order & Booking Integrations": "/order-and-booking-integrations",
+  "Platform Status": "/platform-status",
   // Fleets & Enterprise footer + header "For Business" menu
   "Fleet Solutions": "/fleet-solutions",
   "Fleet Acquisition": "/fleet-acquisition",
