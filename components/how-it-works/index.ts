@@ -1,0 +1,9 @@
+export { default as HowVerificationWorksHeroSection } from "./HowVerificationWorksHeroSection";
+export { default as CoreDistinctionsSection } from "./CoreDistinctionsSection";
+export { default as ChooseWhoOrWhatSection } from "./ChooseWhoOrWhatSection";
+export { default as WhatACheckMayInvolveSection } from "./WhatACheckMayInvolveSection";
+export { default as WhatEachStatusMeansSection } from "./WhatEachStatusMeansSection";
+export { default as ReadTheScopeBehindASignalSection } from "./ReadTheScopeBehindASignalSection";
+export { default as WhatVerificationDoesNotEstablishSection } from "./WhatVerificationDoesNotEstablishSection";
+export { default as ConcernedAboutAListingSection } from "./ConcernedAboutAListingSection";
+export { default as HowVerificationWorksFaqSection } from "./HowVerificationWorksFaqSection";

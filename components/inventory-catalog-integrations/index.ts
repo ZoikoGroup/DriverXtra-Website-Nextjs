@@ -1,0 +1,11 @@
+export { default as InventoryHeroSection } from "./InventoryHeroSection";
+export { default as WhoThisIsForSection } from "./WhoThisIsForSection";
+export { default as FromOrganizationToPublicationSection } from "./FromOrganizationToPublicationSection";
+export { default as PathwayAvailabilitySection } from "./PathwayAvailabilitySection";
+export { default as WhatFlowsThroughSection } from "./WhatFlowsThroughSection";
+export { default as ClaimsCarryTheirEvidenceSection } from "./ClaimsCarryTheirEvidenceSection";
+export { default as ExploreIntegrationRequirementsSection } from "./ExploreIntegrationRequirementsSection";
+export { default as WhenSomethingGoesWrongSection } from "./WhenSomethingGoesWrongSection";
+export { default as WhereTheDetailsLiveSection } from "./WhereTheDetailsLiveSection";
+export { default as TalkToThePartnerTeamSection } from "./TalkToThePartnerTeamSection";
+export { default as InventoryFaqSection } from "./InventoryFaqSection";

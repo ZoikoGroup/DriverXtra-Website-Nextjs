@@ -1,0 +1,12 @@
+export { default as SecurityHeroSection } from "./SecurityHeroSection";
+export { default as WhatBringsYouHereSection } from "./WhatBringsYouHereSection";
+export { default as PrepareBeforeAccessSection } from "./PrepareBeforeAccessSection";
+export { default as WhoProtectsWhatSection } from "./WhoProtectsWhatSection";
+export { default as AuthenticationPermissionsSection } from "./AuthenticationPermissionsSection";
+export { default as HandleCredentialsSafelySection } from "./HandleCredentialsSafelySection";
+export { default as ProtectEveryConnectionSection } from "./ProtectEveryConnectionSection";
+export { default as CollectLessKeepItShorterSection } from "./CollectLessKeepItShorterSection";
+export { default as SafeExamplePatternSection } from "./SafeExamplePatternSection";
+export { default as TroubleshootingDidYouSeeSection } from "./TroubleshootingDidYouSeeSection";
+export { default as ReportVulnerabilitySection } from "./ReportVulnerabilitySection";
+export { default as SecurityFaqSection } from "./SecurityFaqSection";
