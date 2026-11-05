@@ -385,6 +385,8 @@ const pageLinks: Record<string, string> = {
   "Seller Safety":"/seller-safety",
   "Parts Authenticity & Anti-Counterfeit":"/parts-authenticity",
   "Report a Listing":"/report-a-listing",
+  "Report Fraud":"/report-a-fraud",
+  "Disputes & Appeals":"/disputes-appeals",
 };
 
 export const hrefFor = (label: string) => pageLinks[label] ?? "#";
