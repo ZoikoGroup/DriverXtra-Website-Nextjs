@@ -379,6 +379,10 @@ const pageLinks: Record<string, string> = {
   "Parts Procurement": "/parts-procurement",
   "Lifecycle Analytics": "/lifecycle-analytics",
   "Enterprise Contact": "/enterprise-contact",
+  "How Verification Works":"/how-it-works",
+  "Inventory & Catalog Integrations":"/inventory-catalog-integrations",
+  "Security & Integration Guidance":"/security-integration-guidance",
+  "Buyer Safety":"/trust-buyer-safety",
 };
 
 export const hrefFor = (label: string) => pageLinks[label] ?? "#";

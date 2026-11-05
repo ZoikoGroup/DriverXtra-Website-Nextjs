@@ -1,0 +1,10 @@
+export { default as BuyerSafetyHeroSection } from "./BuyerSafetyHeroSection";
+export { default as SixStepsToSaferPurchaseSection } from "./SixStepsToSaferPurchaseSection";
+export { default as CheckConfirmsWhatItDescribesSection } from "./CheckConfirmsWhatItDescribesSection";
+export { default as CheckVehicleAndDocumentsSection } from "./CheckVehicleAndDocumentsSection";
+export { default as CheckPartsBeforeYouBuySection } from "./CheckPartsBeforeYouBuySection";
+export { default as PayCarefullyAndKeepControlSection } from "./PayCarefullyAndKeepControlSection";
+export { default as WarningSignsWorthCheckingSection } from "./WarningSignsWorthCheckingSection";
+export { default as QuestionsBeforeYouCommitSection } from "./QuestionsBeforeYouCommitSection";
+export { default as FindTheRightRouteSection } from "./FindTheRightRouteSection";
+export { default as BuyerSafetyFaqSection } from "./BuyerSafetyFaqSection";
