@@ -1,0 +1,10 @@
+export { default as SellWithClearerSafetyStepsHero } from "./SellWithClearerSafetyStepsHero";
+export { default as BeforeYouTalkToBuyersSection } from "./BeforeYouTalkToBuyersSection";
+export { default as ProtectAccountFromImpersonationSection } from "./ProtectAccountFromImpersonationSection";
+export { default as ConfirmPaymentSection } from "./ConfirmPaymentSection";
+export { default as PrepareForVehicleViewingsSection } from "./PrepareForVehicleViewingsSection";
+export { default as ConfirmHandoverRequirementsSection } from "./ConfirmHandoverRequirementsSection";
+export { default as KeepPartsShippingVerifiableSection } from "./KeepPartsShippingVerifiableSection";
+export { default as KeepRelevantEvidenceSafelySection } from "./KeepRelevantEvidenceSafelySection";
+export { default as NotSureWhereToReportSection } from "./NotSureWhereToReportSection";
+export { default as SellerSafetyFaqSection } from "./SellerSafetyFaqSection";

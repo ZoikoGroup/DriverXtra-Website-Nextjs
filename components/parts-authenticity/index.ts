@@ -1,0 +1,9 @@
+export { default as PartsAuthenticityHeroSection } from "./PartsAuthenticityHeroSection";
+export { default as OriginConditionAndFitSection } from "./OriginConditionAndFitSection";
+export { default as WhatDifferentPartsClaimsMeanSection } from "./WhatDifferentPartsClaimsMeanSection";
+export { default as WhatEvidenceCanAndCantShowSection } from "./WhatEvidenceCanAndCantShowSection";
+export { default as HowClaimsAppearOnListingsSection } from "./HowClaimsAppearOnListingsSection";
+export { default as SignsWorthACloserLookSection } from "./SignsWorthACloserLookSection";
+export { default as CheckAtEveryStageSection } from "./CheckAtEveryStageSection";
+export { default as PresentAuthenticityClaimsAccuratelySection } from "./PresentAuthenticityClaimsAccuratelySection";
+export { default as PartsAuthenticityFaqSection } from "./PartsAuthenticityFaqSection";
