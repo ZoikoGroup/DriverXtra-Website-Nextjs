@@ -257,7 +257,6 @@ const pageLinks: Record<string, string> = {
   "Trade In": "/trade-in",
   "List for Sale": "/list-and-manage",
   "How Selling Works": "/sell-vehicles#how-selling-works",
-  "Seller Safety": "/sell-vehicles#seller-readiness",
   // Parts & Accessories (footer + header menu)
   "Shop All Parts & Accessories": "/parts",
   "Find Parts by VIN": "/find-parts-by-vin",
@@ -383,6 +382,11 @@ const pageLinks: Record<string, string> = {
   "Inventory & Catalog Integrations":"/inventory-catalog-integrations",
   "Security & Integration Guidance":"/security-integration-guidance",
   "Buyer Safety":"/trust-buyer-safety",
+  "Seller Safety":"/seller-safety",
+  "Parts Authenticity & Anti-Counterfeit":"/parts-authenticity",
+  "Report a Listing":"/report-a-listing",
+  "Report Fraud":"/report-a-fraud",
+  "Disputes & Appeals":"/disputes-appeals",
 };
 
 export const hrefFor = (label: string) => pageLinks[label] ?? "#";
