@@ -387,6 +387,8 @@ const pageLinks: Record<string, string> = {
   "Report a Listing":"/report-a-listing",
   "Report Fraud":"/report-a-fraud",
   "Disputes & Appeals":"/disputes-appeals",
+  // Company & Support footer column
+  "Press & Media": "/press-media",
 };
 
 export const hrefFor = (label: string) => pageLinks[label] ?? "#";
