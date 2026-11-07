@@ -1,0 +1,11 @@
+export { default as BlackFridayHero } from "./BlackFridayHero";
+export { default as DriverPlansSection } from "./DriverPlansSection";
+export { default as OfferConditionsSection } from "./OfferConditionsSection";
+export { default as DowntimeSection } from "./DowntimeSection";
+export { default as PlanFeaturesSection } from "./PlanFeaturesSection";
+export { default as AudienceSection } from "./AudienceSection";
+export { default as ThreeStepsSection } from "./ThreeStepsSection";
+export { default as BlackFridayFaqSection } from "./BlackFridayFaqSection";
+export { default as OfferUpdatesSection } from "./OfferUpdatesSection";
+export { default as DriverXHeader } from "./DriverXHeader";
+export { default as DriverXFooter } from "./DriverXFooter";

@@ -299,6 +299,16 @@ body {
   }
 }
 
+/* ---------- Black Friday campaign page (app/black-friday) ---------- */
+.black-friday {
+  font-family: var(--font-public-sans), var(--font-sans);
+}
+.black-friday .bf-display {
+  font-family: var(--font-archivo), var(--font-sans);
+  font-stretch: 112%;
+  letter-spacing: -0.02em;
+}
+
 /* ---------- Skeleton loading placeholder ---------- */
 .skeleton {
   background: linear-gradient(90deg, #eef1f5 25%, #f8fafc 37%, #eef1f5 63%);

@@ -4,6 +4,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SiteLoader from "@/components/layout/SiteLoader";
 import RouteProgress from "@/components/layout/RouteProgress";
+import HideOnRoutes from "@/components/layout/HideOnRoutes";
 import "./globals.css";
 
 const inter = Inter({
@@ -41,9 +42,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </noscript>
         <SiteLoader />
         <RouteProgress />
-        <Header />
+        <HideOnRoutes>
+          <Header />
+        </HideOnRoutes>
         <main>{children}</main>
-        <Footer />
+        <HideOnRoutes>
+          <Footer />
+        </HideOnRoutes>
       </body>
     </html>
   );
