@@ -389,6 +389,9 @@ const pageLinks: Record<string, string> = {
   "Disputes & Appeals":"/disputes-appeals",
   // Company & Support footer column
   "Press & Media": "/press-media",
+  "Ownership Cost Guides":"/ownership-cost-guides",
+  "EV & Charging Guides":"/ev-charging-guides",
+  "Buying & Selling Guides":"/buying-selling-guides",
 };
 
 export const hrefFor = (label: string) => pageLinks[label] ?? "#";
