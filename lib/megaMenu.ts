@@ -58,6 +58,7 @@ import {
   MessageCircleQuestionMark,
   MessageSquareMore,
   MonitorCog,
+  Newspaper,
   Package,
   Percent,
   PiggyBank,
@@ -625,6 +626,7 @@ export const megaMenus: MegaMenu[] = [
           { label: "Parts & Fitment Guides", icon: Settings },
           { label: "Service & Maintenance Guides", icon: ClipboardList },
           { label: "Finance & Insurance Explainers", icon: ShieldCheck },
+          { label: "Blog", icon: Newspaper },
         ],
       },
       {

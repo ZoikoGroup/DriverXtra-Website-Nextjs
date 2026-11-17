@@ -181,6 +181,7 @@ export const footerColumns: LinkGroup[] = [
       "Contact DriverXtra",
       "Careers",
       "Press & Media",
+      "Blog",
       "Partner With Us",
     ],
   },
@@ -389,6 +390,7 @@ const pageLinks: Record<string, string> = {
   "Disputes & Appeals":"/disputes-appeals",
   // Company & Support footer column
   "Press & Media": "/press-media",
+  "Blog": "/blog/driverx-mobile-35-off-driver-plans",
 };
 
 export const hrefFor = (label: string) => pageLinks[label] ?? "#";
