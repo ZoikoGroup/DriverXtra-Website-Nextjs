@@ -383,12 +383,18 @@ const pageLinks: Record<string, string> = {
   "Security & Integration Guidance":"/security-integration-guidance",
   "Buyer Safety":"/trust-buyer-safety",
   "Seller Safety":"/seller-safety",
+  "Buying & Selling Guides": "/selling-guide",
+  "Selling Guide": "/selling-guide",
   "Parts Authenticity & Anti-Counterfeit":"/parts-authenticity",
   "Report a Listing":"/report-a-listing",
   "Report Fraud":"/report-a-fraud",
   "Disputes & Appeals":"/disputes-appeals",
   // Company & Support footer column
   "Press & Media": "/press-media",
+  Newsroom: "/newsroom",
+  "Automotive Insights": "/automative-insights",
+  "Market Trends & Price Indices": "/market-trends-price-indices",
+  "Methodology & Data Standards": "/methodology-data-standards",
 };
 
 export const hrefFor = (label: string) => pageLinks[label] ?? "#";
