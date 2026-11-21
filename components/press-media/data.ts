@@ -23,7 +23,7 @@ export const START_ROUTES = [
   {
     title: "Published announcements",
     body: "Official statements live in the Newsroom.",
-    href: "#newsroom",
+    href: "/newsroom",
     icon: "globe",
     image: `${IMG}/start-published-announcements.webp`,
     alt: "Hand signing a printed document",

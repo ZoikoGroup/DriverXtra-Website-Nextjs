@@ -109,7 +109,7 @@ export default function Footer() {
             <ul className="flex flex-wrap gap-x-6 gap-y-2 text-[13px] font-medium text-slate-300">
               {legalLinks.map((link) => (
                 <li key={link}>
-                  <Link href="#" className="link-underline hover:text-white">
+                  <Link href={hrefFor(link)} className="link-underline hover:text-white">
                     {link}
                   </Link>
                 </li>

@@ -36,7 +36,7 @@ const DEFAULT_GUIDE_CARDS: PracticalGuideCard[] = [
     description: "Step-by-step checks for both sides.",
     imageSrc: "/images/auto/9.png",
     imageAlt: "Front profile of a performance muscle car parked outdoors",
-    href: "#",
+    href: "/selling-guide",
   },
 ];
 

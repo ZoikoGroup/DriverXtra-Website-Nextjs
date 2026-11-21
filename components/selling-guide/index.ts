@@ -1,0 +1,9 @@
+export { default as SellingGuideHeroSection } from "./SellingGuideHeroSection";
+export { default as FindRightWayToSellSection } from "./FindRightWayToSellSection";
+export { default as GetCarReadySection } from "./GetCarReadySection";
+export { default as TakePhotosSection } from "./TakePhotosSection";
+export { default as SetAskingPriceSection } from "./SetAskingPriceSection";
+export { default as WriteListingSection } from "./WriteListingSection";
+export { default as RespondToBuyersSection } from "./RespondToBuyersSection";
+export { default as GetPaidSafelySection } from "./GetPaidSafelySection";
+export { default as SellingFaqSection } from "./SellingFaqSection";
