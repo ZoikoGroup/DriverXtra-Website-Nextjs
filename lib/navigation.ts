@@ -395,6 +395,21 @@ const pageLinks: Record<string, string> = {
   "Automotive Insights": "/automative-insights",
   "Market Trends & Price Indices": "/market-trends-price-indices",
   "Methodology & Data Standards": "/methodology-data-standards",
+  "Help Center": "/Help-Center",
+  "Contact DriverXtra": "/Contact-DriverXtra",
+  "How DriverXtra Works": "/DriverXtra-Works",
+  Careers: "/Careers",
+  // Legal, Accessibility & Global
+  "Cookie Policy": "/cookie-policy",
+  "Cookie Settings": "/cookie-policy#cookie-settings",
+  "Privacy Choices": "/privacy-choices",
+  "Accessibility Statement": "/accessibility-statement",
+  Accessibility: "/accessibility-statement",
+  "Compliance Disclosures": "/compliance-disclosures",
+  "Terms of Use": "/terms-of-use",
+  "Privacy Policy": "/privacy-policy",
+  "Sitemap & Global Markets": "/sitemap-global-markets",
+  Sitemap: "/sitemap-global-markets",
 };
 
 export const hrefFor = (label: string) => pageLinks[label] ?? "#";
