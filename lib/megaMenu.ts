@@ -58,7 +58,6 @@ import {
   MessageCircleQuestionMark,
   MessageSquareMore,
   MonitorCog,
-  Newspaper,
   Package,
   Percent,
   PiggyBank,
@@ -622,11 +621,10 @@ export const megaMenus: MegaMenu[] = [
         title: "Guides",
         items: [
           { label: "Buying Guides", icon: BookOpen },
-          { label: "Selling Guides", icon: Tag },
+          { label: "Selling Guides", icon: Tag, href: "/selling-guide" },
           { label: "Parts & Fitment Guides", icon: Settings },
           { label: "Service & Maintenance Guides", icon: ClipboardList },
           { label: "Finance & Insurance Explainers", icon: ShieldCheck },
-          { label: "Blog", icon: Newspaper },
         ],
       },
       {
@@ -642,7 +640,7 @@ export const megaMenus: MegaMenu[] = [
         title: "Editorial Standards",
         items: [
           { label: "Editorial Policy", icon: FileText },
-          { label: "Methodologies", icon: Search },
+          { label: "Methodologies", icon: Search, href: "/methodology-data-standards" },
           { label: "Sponsored Content Policy", icon: Megaphone },
           { label: "Corrections / Contact", icon: Mail },
         ],
