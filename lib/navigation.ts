@@ -391,6 +391,9 @@ const pageLinks: Record<string, string> = {
   "Disputes & Appeals":"/disputes-appeals",
   // Company & Support footer column
   "Press & Media": "/press-media",
+  "Ownership Cost Guides":"/ownership-cost-guides",
+  "EV & Charging Guides":"/ev-charging-guides",
+  "Buying & Selling Guides":"/buying-selling-guides",
   Newsroom: "/newsroom",
   "Automotive Insights": "/automative-insights",
   "Market Trends & Price Indices": "/market-trends-price-indices",
