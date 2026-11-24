@@ -383,7 +383,6 @@ const pageLinks: Record<string, string> = {
   "Security & Integration Guidance":"/security-integration-guidance",
   "Buyer Safety":"/trust-buyer-safety",
   "Seller Safety":"/seller-safety",
-  "Buying & Selling Guides": "/selling-guide",
   "Selling Guide": "/selling-guide",
   "Parts Authenticity & Anti-Counterfeit":"/parts-authenticity",
   "Report a Listing":"/report-a-listing",
