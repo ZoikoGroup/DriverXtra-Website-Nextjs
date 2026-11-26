@@ -74,7 +74,12 @@ jobs:
               npm ci
               cp package-lock.json .deployed-lock
             fi
-            pm2 restart driverxtra --update-env
+            # Start the app on a fresh server; otherwise restart it with the new build.
+            if pm2 describe driverxtra > /dev/null 2>&1; then
+              pm2 restart driverxtra --update-env
+            else
+              pm2 start npm --name driverxtra -- start -- -p 3001
+            fi
             pm2 save'
 
       - name: Health check
