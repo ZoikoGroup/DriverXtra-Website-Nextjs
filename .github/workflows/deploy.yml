@@ -40,11 +40,28 @@ jobs:
         env:
           VM_HOST: ${{ secrets.VM_HOST }}
           VM_USER: ${{ secrets.VM_USER }}
+        # tar over ssh instead of rsync, so the VM needs nothing beyond a standard shell.
+        # Files are unpacked into a fresh folder, server-only files (.env, node_modules, …)
+        # are carried over, then the folders are swapped — same result as rsync --delete.
         run: |
-          rsync -az --delete \
-            --exclude node_modules --exclude .git --exclude .github \
-            --exclude '.env*' --exclude .deployed-lock --exclude .next/cache \
-            ./ "$VM_USER@$VM_HOST:~/driverxtra/"
+          tar -czf - \
+            --exclude=./node_modules --exclude=./.git --exclude=./.github \
+            --exclude='./.env*' --exclude=./.deployed-lock --exclude=./.next/cache \
+            . | ssh "$VM_USER@$VM_HOST" 'set -e
+              rm -rf ~/driverxtra.new ~/driverxtra.old
+              mkdir -p ~/driverxtra ~/driverxtra.new
+              tar -xzf - -C ~/driverxtra.new
+              cd ~/driverxtra
+              for f in node_modules .deployed-lock .next/cache .env*; do
+                if [ -e "$f" ]; then
+                  mkdir -p "$(dirname ~/driverxtra.new/"$f")"
+                  mv "$f" ~/driverxtra.new/"$f"
+                fi
+              done
+              cd ~
+              mv ~/driverxtra ~/driverxtra.old
+              mv ~/driverxtra.new ~/driverxtra
+              rm -rf ~/driverxtra.old'
 
       - name: Install deps if changed and restart
         env:
