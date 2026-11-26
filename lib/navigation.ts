@@ -288,7 +288,6 @@ const pageLinks: Record<string, string> = {
   "Interior Accessories": "/parts?category=interior#all-parts",
   "Exterior Accessories": "/parts?category=exterior#all-parts",
   "Tools & Garage Equipment": "/tools-and-workshop-equipment",
-  "Workshop Supplies": "/tools-and-workshop-equipment",
   "Refurbished / Used": "/parts#all-parts",
   "Find Parts": "/parts",
   "Select Your Vehicle": "/parts#check-compatibility",
@@ -426,6 +425,10 @@ const pageLinks: Record<string, string> = {
   "Privacy Policy": "/privacy-policy",
   "Sitemap & Global Markets": "/sitemap-global-markets",
   Sitemap: "/sitemap-global-markets",
+  "Bulk / B2B Parts":"bulk-parts",
+  "Workshop Supplies":"/workshop-supplies",
+  "Verified Parts Sellers":"/verified-parts-sellers",
+  "Sensors":"/sensors"
 };
 
 export const hrefFor = (label: string) => pageLinks[label] ?? "#";
