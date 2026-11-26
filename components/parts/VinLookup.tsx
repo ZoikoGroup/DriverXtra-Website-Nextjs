@@ -151,6 +151,14 @@ export default function VinLookup() {
                 <Link href="/parts#all-parts" className="text-blue-700 underline underline-offset-2 hover:text-ink">
                   Browse All Parts
                 </Link>
+                <span className="mx-1.5 text-slate-400">·</span>
+                <Link href="/use-my-garage" className="text-blue-700 underline underline-offset-2 hover:text-ink">
+                  Use My Garage
+                </Link>
+                <span className="mx-1.5 text-slate-400">·</span>
+                <Link href="/fitment-help" className="text-blue-700 underline underline-offset-2 hover:text-ink">
+                  Fitment Help
+                </Link>
               </p>
             </form>
           </Reveal>
