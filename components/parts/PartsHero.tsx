@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
+import Link from "next/link";
 import { Check, ChevronDown } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import BgImage from "@/components/ui/BgImage";
@@ -47,8 +48,19 @@ export default function PartsHero({ vehicle, onCheck, onClear }: PartsHeroProps)
           </Reveal>
           <Reveal delay={200}>
             <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-slate-300">
-              Shop OEM, aftermarket, refurbished and performance parts from participating sellers. Start with your vehicle
-              for compatibility guidance, or browse all parts and review fitment before you buy.
+              Shop OEM, aftermarket, refurbished and{" "}
+              <Link href="/performance-and-tuning" className="text-white underline decoration-brand underline-offset-4 transition-colors hover:text-brand">
+                performance parts
+              </Link>{" "}
+              from participating sellers. Start with your vehicle or{" "}
+              <Link href="/use-my-garage" className="text-white underline decoration-brand underline-offset-4 transition-colors hover:text-brand">
+                your garage
+              </Link>{" "}
+              for compatibility guidance, or browse all parts and{" "}
+              <Link href="/fitment-help" className="text-white underline decoration-brand underline-offset-4 transition-colors hover:text-brand">
+                review fitment
+              </Link>{" "}
+              before you buy.
             </p>
           </Reveal>
         </div>

@@ -208,7 +208,7 @@ export const choosingTips: { title: string; text: string; icon: LucideIcon; link
   },
   {
     title: "Aftermarket",
-    text: "From other supply channels. Not automatically compatible, better or worse.",
+    text: "From other supply channels. Not automatically compatible, better or worse. Upgrades are under Performance & Tuning.",
     icon: Wrench,
     link: { label: "Aftermarket Parts", href: "/aftermarket-parts" },
   },
@@ -226,6 +226,7 @@ export const choosingTips: { title: string; text: string; icon: LucideIcon; link
     title: "Something wrong?",
     text: "Use “Report a fitment or listing concern” on any part. Reports are reviewed.",
     icon: Flag,
+    link: { label: "Fitment Help", href: "/fitment-help" },
   },
   {
     title: "Buying for a fleet or workshop?",
@@ -278,7 +279,7 @@ export const faqs: Faq[] = [
   },
   {
     q: "Do I need an account to use My Garage?",
-    a: "Yes — saving vehicles to My Garage needs an account. You can still check compatibility for one vehicle without signing in.",
+    a: "No. Use My Garage keeps vehicles for your current session without an account. Sign in only if you want to save them for next time.",
   },
   {
     q: "How do I report a wrong fitment claim or suspicious part?",
